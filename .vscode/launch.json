@@ -20,6 +20,12 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"
+    },
+    {
+      "name": "Run (web)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-d", "chrome"]
     }
   ]
 }

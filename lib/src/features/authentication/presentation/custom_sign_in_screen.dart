@@ -43,7 +43,13 @@ class SignInAnonymouslyFooter extends ConsumerWidget {
           ],
         ),
         TextButton(
-          onPressed: () => ref.read(firebaseAuthProvider).signInAnonymously(),
+          onPressed: () {
+            try {
+              ref.read(firebaseAuthProvider).signInAnonymously();
+            } catch (e) {
+              print("stuuuufff did fail");
+            } finally {}
+          },
           child: const Text('Sign in anonymously'),
         ),
       ],
