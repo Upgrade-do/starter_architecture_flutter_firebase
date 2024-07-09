@@ -6,12 +6,10 @@ class AppTheme {
         useMaterial3: true,
         colorScheme: const ColorScheme(
           primary:  Color(0xFFD1ECBC), // Soft sage green
-          secondary:  Color(0xFFFCE7C1), // Light peach
-          background: Colors.white,
+          secondary:  Color(0xFFFCE7C1),
           surface: Colors.white,
           onPrimary: Colors.black,
           onSecondary: Colors.black,
-          onBackground: Colors.black,
           onSurface: Colors.black,
           error:  Color(0xFFF44336),
           onError: Colors.black,
