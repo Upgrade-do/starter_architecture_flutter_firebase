@@ -2,11 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/application/get_all_messages_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/utils/image_picker.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class SendImageScreen extends ConsumerStatefulWidget {
   const SendImageScreen({super.key});
@@ -19,7 +20,8 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
   XFile? image;
   late final TextEditingController _promptController;
   bool isLoading = false;
-  final apiKey = dotenv.env['API_KEY'] ?? '';
+   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
+  // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
 
   @override
   void initState() {
@@ -69,10 +71,10 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                         style: TextStyle(fontSize: 18),
                       ),
                     )
-                  : Image.file(
+                  : kIsWeb ? Image.file(
                       File(image!.path),
                       fit: BoxFit.cover,
-                    ),
+                    ) : null,
             ),
             // Pick and Remove image buttons
             Padding(

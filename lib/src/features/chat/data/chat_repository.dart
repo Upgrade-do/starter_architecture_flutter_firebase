@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_vertexai/firebase_vertexai.dart';
+// import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/foundation.dart' show immutable;
-// import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:starter_architecture_flutter_firebase/src/extensions/extensions.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/data/storage_repository.dart';
@@ -27,15 +27,15 @@ class ChatRepository {
 
   //! This method sends an image alongside the text
   Future sendMessage({
-    required String apiKey,
+    required String? apiKey,
     required XFile? image,
     required String promptText,
   }) async {
     // Define your model
-    final textModel = GenerativeModel(model: 'gemini-pro', apiKey: apiKey);
+    final textModel = GenerativeModel(model: 'gemini-pro', apiKey: "AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo");
     final imageModel = GenerativeModel(
       model: 'gemini-pro-vision',
-      apiKey: apiKey,
+      apiKey: "AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo",
     );
 
     final userId = _auth.currentUser!.uid;

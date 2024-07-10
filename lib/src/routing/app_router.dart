@@ -48,6 +48,7 @@ GoRouter goRouter(GoRouterRef ref) {
   // rebuild GoRouter when app startup state changes
   final appStartupState = ref.watch(appStartupProvider);
   final authRepository = ref.watch(authRepositoryProvider);
+
   return GoRouter(
     initialLocation: '/signIn',
     navigatorKey: _rootNavigatorKey,
@@ -70,10 +71,10 @@ GoRouter goRouter(GoRouterRef ref) {
         return null;
       }
       final isLoggedIn = authRepository.currentUser != null;
+
       if (isLoggedIn) {
         if (path.startsWith('/startup') ||
             path.startsWith('/onboarding') ||
-            path.startsWith('/jobs') ||
             path.startsWith('/signIn')) {
           return '/chat';
         }
@@ -147,7 +148,7 @@ GoRouter goRouter(GoRouterRef ref) {
                   GoRoute(
                     path: 'add',
                     name: AppRoute.addJob.name,
-                    parentNavigatorKey: _rootNavigatorKey,
+                    parentNavigatorKey: _jobsNavigatorKey,
                     pageBuilder: (context, state) {
                       return const MaterialPage(
                         fullscreenDialog: true,
@@ -168,7 +169,7 @@ GoRouter goRouter(GoRouterRef ref) {
                       GoRoute(
                         path: 'entries/add',
                         name: AppRoute.addEntry.name,
-                        parentNavigatorKey: _rootNavigatorKey,
+                        parentNavigatorKey: _jobsNavigatorKey,
                         pageBuilder: (context, state) {
                           final jobId = state.pathParameters['id']!;
                           return MaterialPage(

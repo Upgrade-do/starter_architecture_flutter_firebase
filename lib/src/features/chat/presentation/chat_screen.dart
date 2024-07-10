@@ -16,7 +16,8 @@ class ChatScreen extends ConsumerStatefulWidget {
 
 class _ChatScreenState extends ConsumerState<ChatScreen> {
   late final TextEditingController _messageController;
-  final apiKey = dotenv.env['API_KEY'] ?? '';
+  // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
+   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
 
   @override
   void initState() {

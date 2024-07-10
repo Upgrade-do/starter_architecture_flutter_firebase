@@ -34,6 +34,7 @@ target 'Runner' do
   pod 'Firebase/Auth', $FirebaseSDKVersion
   pod 'Firebase/Firestore', $FirebaseSDKVersion
   pod 'Firebase/Storage', $FirebaseSDKVersion
+  pod 'Firebase/AppCheck', $FirebaseSDKVersion
 
   flutter_install_all_macos_pods File.dirname(File.realpath(__FILE__))
   target 'RunnerTests' do

@@ -7,7 +7,7 @@ import 'package:starter_architecture_flutter_firebase/src/app.dart';
 import 'package:starter_architecture_flutter_firebase/src/localization/string_hardcoded.dart';
 // ignore:depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:firebase_vertexai/firebase_vertexai.dart';
+// import 'package:firebase_vertexai/firebase_vertexai.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
