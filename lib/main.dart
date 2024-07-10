@@ -20,17 +20,17 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // * Entry point of the app
 
-  final model =
-      FirebaseVertexAI.instance.generativeModel(model: 'gemini-1.5-flash');
-// Provide a prompt that contains text
-  final prompt = [
-    Content.text(
-        'tell me where can i find the recepies app from google io 2024')
-  ];
+//   final model =
+//       FirebaseVertexAI.instance.generativeModel(model: 'gemini-1.5-flash');
+// // Provide a prompt that contains text
+//   final prompt = [
+//     Content.text(
+//         'tell me where can i find the recepies app from google io 2024')
+//   ];
 
-// To generate text output, call generateContent with the text input
-  final response = await model.generateContent(prompt);
-  print(response.text);
+// // To generate text output, call generateContent with the text input
+//   final response = await model.generateContent(prompt);
+  // print(response.text);
   runApp(const ProviderScope(
     child: MyApp(),
   ));
