@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:starter_architecture_flutter_firebase/src/features/chat/application/camera_provider.dart';
+import 'package:starter_architecture_flutter_firebase/src/features/chat/application/camera_service.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/application/get_all_messages_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/utils/image_picker.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -20,12 +23,13 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
   XFile? image;
   late final TextEditingController _promptController;
   bool isLoading = false;
-   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
+  final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
+  CameraController? _cameraController;
   // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
 
   @override
   void initState() {
-    _pickImage();
+   
     _promptController = TextEditingController();
     super.initState();
   }
@@ -33,6 +37,7 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
   @override
   void dispose() {
     _promptController.dispose();
+    _cameraController?.dispose();
     super.dispose();
   }
 
@@ -50,8 +55,27 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
     });
   }
 
+  Future<void> _initializeCamera() async {
+    _cameraController = await CameraService.initializeCamera();
+    ref.read(cameraControllerProvider.notifier).state = _cameraController;
+    setState(() {});
+  }
+
+  Future<void> _captureImage() async {
+    if (_cameraController == null || !_cameraController!.value.isInitialized) {
+      await _initializeCamera();
+    }
+
+    final image = await CameraService.captureImage(_cameraController!);
+    if (image != null) {
+      ref.read(imageProvider.notifier).state = image;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final image = ref.watch(imageProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Send Image Prompt!'),
@@ -71,10 +95,12 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                         style: TextStyle(fontSize: 18),
                       ),
                     )
-                  : kIsWeb ? Image.file(
-                      File(image!.path),
-                      fit: BoxFit.cover,
-                    ) : null,
+                  : kIsWeb
+                      ? Image.file(
+                          File(image!.path),
+                          fit: BoxFit.cover,
+                        )
+                      : null,
             ),
             // Pick and Remove image buttons
             Padding(
@@ -95,6 +121,16 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                       padding: EdgeInsets.zero,
                       onPressed: _removeImage,
                       child: const Text('Remove Image'),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: CupertinoButton.filled(
+                      padding: EdgeInsets.zero,
+                      onPressed: () => _captureImage(),
+                      child: const Text(
+                        'Capture Image',
+                      ),
                     ),
                   ),
                 ],
