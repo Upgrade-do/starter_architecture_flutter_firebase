@@ -11,6 +11,7 @@ import 'package:starter_architecture_flutter_firebase/src/features/chat/applicat
 import 'package:starter_architecture_flutter_firebase/src/features/chat/application/get_all_messages_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/utils/image_picker.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:starter_architecture_flutter_firebase/src/widgets/button.dart';
 
 class SendImageScreen extends ConsumerStatefulWidget {
   const SendImageScreen({super.key});
@@ -29,7 +30,6 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
 
   @override
   void initState() {
-   
     _promptController = TextEditingController();
     super.initState();
   }
@@ -46,10 +46,12 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
     if (pickedImage == null) {
       return;
     }
-    setState(() => image = pickedImage);
+    ref.read(imageProvider.notifier).state = pickedImage;
+    // setState(() => image = pickedImage);
   }
 
   void _removeImage() async {
+    ref.read(imageProvider.notifier).state = null;
     setState(() {
       image = null;
     });
@@ -85,22 +87,26 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Image
-            Container(
-              height: 400,
-              color: Colors.grey[200],
-              child: image == null
-                  ? const Center(
-                      child: Text(
-                        'No Image Selected',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    )
-                  : kIsWeb
-                      ? Image.file(
-                          File(image!.path),
-                          fit: BoxFit.cover,
+            Column(
+              children: [
+                SizedBox(
+                  height: 300,
+                  // color: Colors.grey[200],
+                  child: image == null
+                      ? const Center(
+                          child: Text(
+                            'No Image Selected',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         )
-                      : null,
+                      : !kIsWeb
+                          ? Image.file(
+                              File(image.path),
+                              fit: BoxFit.cover,
+                            )
+                          : null,
+                ),
+              ],
             ),
             // Pick and Remove image buttons
             Padding(
@@ -110,8 +116,8 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                 children: [
                   Expanded(
                     child: CupertinoButton.filled(
-                      padding: EdgeInsets.zero,
                       onPressed: _pickImage,
+                      padding: EdgeInsets.zero,
                       child: const Text('Pick Image'),
                     ),
                   ),
@@ -149,17 +155,18 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                 maxLines: null,
               ),
             ),
-            const SizedBox(height: 100),
+            const SizedBox(height: 16),
             // Send Message Button
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:
+                  const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 32),
               child: isLoading
                   ? const Center(
                       child: CircularProgressIndicator(
                         strokeWidth: 5,
                       ),
                     )
-                  : ElevatedButton(
+                  : Button.primary(
                       onPressed: () async {
                         if (image == null) return;
                         setState(() => isLoading = true);
@@ -169,9 +176,10 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                               promptText: _promptController.text.trim(),
                             );
                         setState(() => isLoading = false);
+                        ref.read(imageProvider.notifier).state = null;
                         Navigator.of(context).pop();
                       },
-                      child: const Text('Send Message'),
+                      text: const Text('Send Message'),
                     ),
             ),
           ],

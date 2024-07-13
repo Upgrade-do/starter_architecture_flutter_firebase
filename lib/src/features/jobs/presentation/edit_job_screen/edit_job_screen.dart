@@ -72,7 +72,6 @@ class _EditJobPageState extends ConsumerState<EditJobScreen> {
             onPressed: state.isLoading ? null : _submit,
             child: const Text(
               'Save',
-              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
           ),
         ],
@@ -87,6 +86,7 @@ class _EditJobPageState extends ConsumerState<EditJobScreen> {
         maxContentWidth: Breakpoint.tablet,
         padding: const EdgeInsets.all(16.0),
         child: Card(
+          color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: _buildForm(),

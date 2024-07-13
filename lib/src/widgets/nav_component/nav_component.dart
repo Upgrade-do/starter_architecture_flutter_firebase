@@ -1,6 +1,5 @@
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
-import 'package:starter_architecture_flutter_firebase/widgets/localization/teapayment_localization.dart';
-import 'package:starter_architecture_flutter_firebase/widgets/nav_component/progress_bar_painter.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/nav_component/progress_bar_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -55,13 +54,11 @@ class NavComponent extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'subscriptions.section.investments.product.current_value'
-                        .t(),
+                    'subscriptions.section.investments.product.current_value',
                     style: customAppTheme.textStyles.bodySmall,
                   ),
                   Text(
-                    'subscriptions.section.investments.product.forecast_value'
-                        .t(),
+                    'subscriptions.section.investments.product.forecast_value',
                     style: customAppTheme.textStyles.bodySmall,
                   ),
                 ],

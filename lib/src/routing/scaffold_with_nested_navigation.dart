@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:starter_architecture_flutter_firebase/src/localization/string_hardcoded.dart';
+import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 
 // Stateful navigation based on:
 // https://github.com/flutter/packages/blob/main/packages/go_router/example/lib/stateful_shell_route.dart
@@ -43,7 +45,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
   }
 }
 
-class ScaffoldWithNavigationBar extends StatelessWidget {
+class ScaffoldWithNavigationBar extends ConsumerWidget {
   const ScaffoldWithNavigationBar({
     super.key,
     required this.body,
@@ -55,10 +57,12 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
   final ValueChanged<int> onDestinationSelected;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    CustomAppTheme theme = ref.watch(appThemeProvider);
     return Scaffold(
       body: body,
       bottomNavigationBar: NavigationBar(
+        backgroundColor: theme.colorsPalette.white,
         selectedIndex: currentIndex,
         destinations: [
           // products

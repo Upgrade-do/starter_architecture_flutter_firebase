@@ -19,7 +19,9 @@ class JobsScreen extends StatelessWidget {
         title: const Text(Strings.jobs),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.add, color: Colors.white),
+            icon: const Icon(
+              Icons.add,
+            ),
             onPressed: () => context.goNamed(AppRoute.addJob.name),
           ),
         ],
@@ -32,6 +34,7 @@ class JobsScreen extends StatelessWidget {
           );
           final jobsQuery = ref.watch(jobsQueryProvider);
           return FirestoreListView<Job>(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             query: jobsQuery,
             emptyBuilder: (context) => const Center(child: Text('No data')),
             errorBuilder: (context, error, stackTrace) => Center(

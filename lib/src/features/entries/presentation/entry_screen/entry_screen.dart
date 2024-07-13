@@ -76,7 +76,6 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
           TextButton(
             child: Text(
               widget.entry != null ? 'Update' : 'Create',
-              style: const TextStyle(fontSize: 18.0, color: Colors.white),
             ),
             onPressed: () => _setEntryAndDismiss(),
           ),
@@ -131,7 +130,6 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
       children: <Widget>[
         Text(
           'Duration: $durationFormatted',
-          style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -146,10 +144,10 @@ class _EntryPageState extends ConsumerState<EntryScreen> {
       controller: TextEditingController(text: _comment),
       decoration: const InputDecoration(
         labelText: 'Comment',
-        labelStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+        // labelStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
       ),
       keyboardAppearance: Brightness.light,
-      style: const TextStyle(fontSize: 20.0, color: Colors.black),
+      // style: const TextStyle(fontSize: 20.0, color: Colors.black),
       maxLines: null,
       onChanged: (comment) => _comment = comment,
     );

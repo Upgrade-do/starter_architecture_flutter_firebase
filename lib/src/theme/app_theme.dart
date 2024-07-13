@@ -78,12 +78,21 @@ class AppTheme {
       );
   static ThemeData getLight() => ThemeData(
         useMaterial3: true,
+        cardColor: CustomAppTheme(
+          colorsPalette: ColorsPalette.light,
+        ).colorsPalette.primary,
         cupertinoOverrideTheme: CupertinoThemeData(
-          primaryColor: lightColorsPalette.primary,
+          primaryColor: lightColorsPalette.secondary,
         ),
         primaryColor: lightColorsPalette.white,
         focusColor: lightColorsPalette.secondary,
         colorScheme: lightColorScheme,
+        appBarTheme: const AppBarTheme(
+          scrolledUnderElevation: 0.0,
+          // backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
+          color: Colors.white,
+        ),
         textTheme: TextTheme(
           displayLarge: textStyles.displayLarge,
           displayMedium: textStyles.displayMedium,

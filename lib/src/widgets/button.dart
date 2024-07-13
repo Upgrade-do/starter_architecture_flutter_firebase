@@ -174,16 +174,16 @@ class Button extends ConsumerWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        elevation: MaterialStateProperty.all<double>(0),
-        backgroundColor: MaterialStateProperty.all<Color>(backgroundColor),
-        minimumSize: MaterialStateProperty.all<Size>(
+        elevation: WidgetStateProperty.all<double>(0),
+        backgroundColor: WidgetStateProperty.all<Color>(backgroundColor),
+        minimumSize: WidgetStateProperty.all<Size>(
           Size(wrap ? 0 : double.infinity, rounded ? 55 : 64),
         ),
-        textStyle: MaterialStateProperty.all<TextStyle>(
+        textStyle: WidgetStateProperty.all<TextStyle>(
           customAppTheme.textStyles.headlineLarge,
         ),
-        foregroundColor: MaterialStateProperty.all<Color>(foregroundColor),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        foregroundColor: WidgetStateProperty.all<Color>(foregroundColor),
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               rounded ? const Radius.circular(8) : Radius.zero,

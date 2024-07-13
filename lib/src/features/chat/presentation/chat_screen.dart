@@ -6,6 +6,7 @@ import 'package:starter_architecture_flutter_firebase/src/features/authenticatio
 import 'package:starter_architecture_flutter_firebase/src/features/chat/application/get_all_messages_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/presentation/send_image_screen.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/presentation/widgets/messages_list.dart';
+import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
   const ChatScreen({super.key});
@@ -17,7 +18,7 @@ class ChatScreen extends ConsumerStatefulWidget {
 class _ChatScreenState extends ConsumerState<ChatScreen> {
   late final TextEditingController _messageController;
   // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
-   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
+  final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
 
   @override
   void initState() {
@@ -33,14 +34,19 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ref.watch(appThemeProvider);
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: theme.colorsPalette.white,
       appBar: AppBar(
+        title: const Text("Gemini Chat"),
+        backgroundColor: Colors.white,
+        scrolledUnderElevation: 0.0,
         actions: [
           Consumer(builder: (context, ref, child) {
             return IconButton(
               onPressed: () {
-                // ref.read(authProvide).singout();
+                // ref.read(authProvider).singout();
               },
               icon: const Icon(
                 Icons.logout,
@@ -69,7 +75,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                 vertical: 3,
               ),
               decoration: BoxDecoration(
-                color: Colors.grey.shade400,
+                color: theme.colorsPalette.neutral2,
                 borderRadius: BorderRadius.circular(15.0),
               ),
               child: Row(

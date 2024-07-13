@@ -18,6 +18,7 @@ class MessagesList extends ConsumerWidget {
     return messageData.when(
       data: (messages) {
         return ListView.builder(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           reverse: true,
           itemCount: messages.length,
           itemBuilder: (context, index) {
