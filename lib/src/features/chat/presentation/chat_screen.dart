@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/authentication/presentation/auth_providers.dart';
@@ -17,18 +18,31 @@ class ChatScreen extends ConsumerStatefulWidget {
 
 class _ChatScreenState extends ConsumerState<ChatScreen> {
   late final TextEditingController _messageController;
+  FocusNode? textFieldNode;
   // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
 
   @override
   void initState() {
-    _messageController = TextEditingController();
     super.initState();
+    _messageController = TextEditingController();
+
+    textFieldNode = FocusNode(
+      onKeyEvent: (node, event) {
+        if (event is KeyDownEvent &&
+            event.physicalKey == PhysicalKeyboardKey.enter) {
+          sendMessage();
+          return KeyEventResult.handled;
+        }
+        return KeyEventResult.ignored;
+      },
+    );
   }
 
   @override
   void dispose() {
     _messageController.dispose();
+    textFieldNode?.dispose();
     super.dispose();
   }
 
@@ -40,7 +54,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
       backgroundColor: theme.colorsPalette.white,
       appBar: AppBar(
         title: const Text("Gemini Chat"),
-        backgroundColor: Colors.white,
+        backgroundColor: theme.colorsPalette.white,
         scrolledUnderElevation: 0.0,
         actions: [
           Consumer(builder: (context, ref, child) {
@@ -84,6 +98,8 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                   Expanded(
                     child: TextField(
                       controller: _messageController,
+                      focusNode: textFieldNode,
+                      onSubmitted: (input) async => sendMessage(),
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Ask any question',
