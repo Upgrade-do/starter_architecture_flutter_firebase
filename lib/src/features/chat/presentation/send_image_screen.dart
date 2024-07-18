@@ -102,9 +102,9 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                       : !kIsWeb
                           ? Image.file(
                               File(image.path),
-                              fit: BoxFit.cover,
+                              fit: BoxFit.cover
                             )
-                          : null,
+                          : Image.network(image.path),
                 ),
               ],
             ),
