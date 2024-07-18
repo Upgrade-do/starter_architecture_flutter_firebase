@@ -20,6 +20,25 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"
+    },
+    {
+      "name": "Run (web)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-d", "chrome", "-v"]
+    },
+    {
+      "name": "Run (Android)",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "sdk gphone64 arm64 (mobile)"
+    },
+    {
+      "name": "Run iOS Simulator",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": ["-d", "apple_ios_simulator"]
     }
   ]
 }

@@ -5,6 +5,7 @@ import 'package:starter_architecture_flutter_firebase/src/constants/strings.dart
 import 'package:starter_architecture_flutter_firebase/src/features/entries/domain/entries_list_tile_model.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/entries/application/entries_service.dart';
 import 'package:starter_architecture_flutter_firebase/src/common_widgets/list_items_builder.dart';
+import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 
 class EntriesScreen extends ConsumerWidget {
   const EntriesScreen({super.key});
@@ -32,15 +33,16 @@ class EntriesScreen extends ConsumerWidget {
   }
 }
 
-class EntriesListTile extends StatelessWidget {
+class EntriesListTile extends ConsumerWidget {
   const EntriesListTile({super.key, required this.model});
   final EntriesListTileModel model;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    CustomAppTheme theme = ref.watch(appThemeProvider);
     const fontSize = 16.0;
     return Container(
-      color: model.isHeader ? Colors.indigo[100] : null,
+      color: model.isHeader ? theme.colorsPalette.positiveActionSoft : null,
       padding: const EdgeInsets.symmetric(
         vertical: Sizes.p8,
         horizontal: Sizes.p16,

@@ -7,6 +7,7 @@ import 'package:starter_architecture_flutter_firebase/src/app.dart';
 import 'package:starter_architecture_flutter_firebase/src/localization/string_hardcoded.dart';
 // ignore:depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
+// import 'package:firebase_vertexai/firebase_vertexai.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,18 @@ Future<void> main() async {
   // * Initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // * Entry point of the app
+
+//   final model =
+//       FirebaseVertexAI.instance.generativeModel(model: 'gemini-1.5-flash');
+// // Provide a prompt that contains text
+//   final prompt = [
+//     Content.text(
+//         'tell me where can i find the recepies app from google io 2024')
+//   ];
+
+// // To generate text output, call generateContent with the text input
+//   final response = await model.generateContent(prompt);
+  // print(response.text);
   runApp(const ProviderScope(
     child: MyApp(),
   ));
