@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_vertexai/firebase_vertexai.dart';
+import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/foundation.dart' show immutable;
-import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:starter_architecture_flutter_firebase/src/extensions/extensions.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/data/storage_repository.dart';
@@ -24,6 +23,8 @@ import 'package:uuid/uuid.dart';
 class ChatRepository {
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
+  final model =
+      FirebaseVertexAI.instance.generativeModel(model: 'gemini-1.5-flash');
 
   //! This method sends an image alongside the text
   Future sendMessage({
@@ -32,11 +33,8 @@ class ChatRepository {
     required String promptText,
   }) async {
     // Define your model
-    final textModel = GenerativeModel(model: 'gemini-pro', apiKey: "AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo");
-    final imageModel = GenerativeModel(
-      model: 'gemini-pro-vision',
-      apiKey: "AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo",
-    );
+    // final textModel = GenerativeModel(
+    //     model: 'gemini-pro', apiKey: "AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo");
 
     final userId = _auth.currentUser!.uid;
     final sentMessageId = const Uuid().v4();
@@ -74,7 +72,20 @@ class ChatRepository {
     try {
       if (image == null) {
         // Make a text only request to Gemini API
-        response = await textModel.generateContent([Content.text(promptText)]);
+        // response = await model.generativeModel(model: model) //.generateContent([Content.text(promptText)]);
+        var prompt = [Content.text(promptText)];
+
+        //   final prompt = [
+//     Content.text(
+//         'tell me where can i find the recepies app from google io 2024')
+//   ];
+
+// // To generate text output, call generateContent with the text input
+//   final response = await model.generateContent(prompt);
+        // print(response.text);
+
+// To generate text output, call generateContent with the text input
+        response = await model.generateContent(prompt);
       } else {
         // convert it to Uint8List
         final imageBytes = await image.readAsBytes();
@@ -85,7 +96,7 @@ class ChatRepository {
         final imagePart = DataPart(mimeType, imageBytes);
 
         // Make a mutli-model request to Gemini API
-        response = await imageModel.generateContent([
+        response = await model.generateContent([
           Content.multi([
             prompt,
             imagePart,
@@ -118,14 +129,13 @@ class ChatRepository {
   }
 
   //! Send Text Only Prompt
-  //TODO: - make the change to use vertexAI
   Future sendTextMessage({
     required String textPrompt,
     required String apiKey,
   }) async {
     try {
       // Define your model
-      final textModel = GenerativeModel(model: 'gemini-pro', apiKey: apiKey);
+      // final textModel = model.generateContent(model: 'gemini-pro', apiKey: apiKey);
 
       final userId = _auth.currentUser!.uid;
       final sentMessageId = const Uuid().v4();
@@ -146,8 +156,7 @@ class ChatRepository {
           .set(message.toMap());
 
       // Make a text only request to Gemini API and save the response
-      final response =
-          await textModel.generateContent([Content.text(textPrompt)]);
+      final response = await model.generateContent([Content.text(textPrompt)]);
 
       final responseText = response.text;
 

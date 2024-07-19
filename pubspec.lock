@@ -726,7 +726,7 @@ packages:
     source: hosted
     version: "6.2.1"
   google_generative_ai:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: google_generative_ai
       sha256: "76e35d93b8c1cd888f69a1a371f8c5dc54cec372b6c74a4c0a5d506e7cf82c1a"
@@ -1403,13 +1403,13 @@ packages:
     source: hosted
     version: "2.2.2"
   uuid:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: uuid
-      sha256: "814e9e88f21a176ae1359149021870e87f7cddaf633ab678a5d2b0bff7fd1ba8"
+      sha256: "83d37c7ad7aaf9aa8e275490669535c8080377cfa7a7004c24dfac53afffaa90"
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.0"
+    version: "4.4.2"
   vector_graphics:
     dependency: transitive
     description:

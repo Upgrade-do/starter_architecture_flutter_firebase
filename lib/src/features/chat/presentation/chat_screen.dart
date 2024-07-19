@@ -18,6 +18,7 @@ class ChatScreen extends ConsumerStatefulWidget {
 
 class _ChatScreenState extends ConsumerState<ChatScreen> {
   late final TextEditingController _messageController;
+  // final Gemini gemini = Gemini.instance;
   FocusNode? textFieldNode;
   // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';

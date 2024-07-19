@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,8 +21,8 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // * Entry point of the app
 
-//   final model =
-//       FirebaseVertexAI.instance.generativeModel(model: 'gemini-1.5-flash');
+  // final model =
+  //     FirebaseVertexAI.instance.generativeModel(model: 'gemini-1.5-flash');
 // // Provide a prompt that contains text
 //   final prompt = [
 //     Content.text(
