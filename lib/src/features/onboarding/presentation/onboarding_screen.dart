@@ -87,11 +87,11 @@ class OnboardingScreen extends ConsumerWidget {
                               },
                       ),
                       const SizedBox(height: 16),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
-                          const Text(
+                          Text(
                             "Powered by ",
                             style: TextStyle(
                               fontSize: 14.0,
@@ -99,11 +99,11 @@ class OnboardingScreen extends ConsumerWidget {
                               color: Colors.grey,
                             ),
                           ),
-                          const SizedBox(width: 4),
-                          Image.asset(
-                            "assets/gemini-logo.png",
-                            scale: 10,
-                          ),
+                          SizedBox(width: 4),
+                          // Image.asset(
+                          //   "assets/gemini-logo.png",
+                          //   scale: 10,
+                          // ),
                         ],
                       ),
                     ],

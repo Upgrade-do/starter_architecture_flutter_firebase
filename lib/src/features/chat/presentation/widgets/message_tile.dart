@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/domain/message.dart';
@@ -39,8 +40,12 @@ class MessageTile extends ConsumerWidget {
             ),
             const SizedBox(height: 10),
             message.imageUrl != null
-                ? Image.network(message.imageUrl!)
-                : const SizedBox.shrink(),
+                ? 
+                CachedNetworkImage(
+                  imageUrl: message.imageUrl!,
+                  placeholder: (context, url) => const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error, color: Colors.red,),
+                ) : const SizedBox.shrink(),
           ],
         ),
       ),

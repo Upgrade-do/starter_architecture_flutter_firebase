@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -104,7 +105,11 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                               File(image.path),
                               fit: BoxFit.cover
                             )
-                          : Image.network(image.path),
+                          :  CachedNetworkImage(
+                              imageUrl: image.path,
+                              placeholder: (context, url) => const CircularProgressIndicator(),
+                              errorWidget: (context, url, error) => const Icon(Icons.error, color: Colors.red,),
+                              ) ,
                 ),
               ],
             ),
@@ -133,7 +138,7 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                   Expanded(
                     child: CupertinoButton.filled(
                       padding: EdgeInsets.zero,
-                      onPressed: () => _captureImage(),
+                      onPressed: _captureImage,
                       child: const Text(
                         'Capture Image',
                       ),
