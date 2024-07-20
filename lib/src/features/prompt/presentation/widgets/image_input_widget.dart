@@ -10,7 +10,7 @@ import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widge
 import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/highlight_border_on_hover_widget.dart';
 import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/prompt_image_widget.dart';
 
-import '../../../util/device_info.dart';
+import '../../../../util/device_info.dart';
 
 late CameraDescription camera;
 late BaseDeviceInfo deviceInfo;

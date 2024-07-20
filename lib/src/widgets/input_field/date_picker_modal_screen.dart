@@ -23,7 +23,7 @@ class DatePickerController {
   String get date => '$day/$month/$year';
 }
 
-@RoutePage()
+// @RoutePage()
 class DatePickerModalScreen extends StatefulWidget {
   const DatePickerModalScreen({
     super.key,

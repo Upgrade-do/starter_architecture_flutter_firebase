@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/prompt/application/prompt_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/util/extensions.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,8 @@ import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widge
 import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/highlight_border_on_hover_widget.dart';
 import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/marketplace_button_widget.dart';
 
-import '../../util/filter_chip_enums.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import '../../../util/filter_chip_enums.dart';
 
 import 'widgets/full_prompt_dialog_widget.dart';
 import 'widgets/image_input_widget.dart';
@@ -86,7 +88,7 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                       elementPadding,
                     ),
                     child: SizedBox(
-                      height: constraints.isMobile ? 130 : 230,
+                      height: constraints.isMobile ? 140 : 250,
                       child: AddImageToPromptWidget(
                         height: constraints.isMobile ? 100 : 200,
                         width: constraints.isMobile ? 100 : 200,
@@ -208,8 +210,9 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                     child: _TextField(
                       controller: viewModel.promptTextController,
                       onChanged: (value) {
+                        state.userPrompt.textInput = (value);
                         // viewModel..notify();
-                        setState(() {});
+                        // setState(() {});
                       },
                     ),
                   ),
@@ -261,16 +264,21 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                             onPressed: () async {
                               await viewModel.submitPrompt().then((_) async {
                                 if (!context.mounted) return;
-                                if (state.recipe != null) {
+
+                                if (ref.watch(promptNotifierProvider).recipe !=
+                                    null) {
                                   bool? shouldSave = await showDialog<bool>(
                                     context: context,
                                     barrierDismissible: false,
                                     builder: (context) => RecipeDialogScreen(
-                                      recipe: state.recipe!,
+                                      recipe: ref
+                                          .watch(promptNotifierProvider)
+                                          .recipe!,
                                       actions: [
                                         MarketplaceButton(
                                           onPressed: () {
                                             Navigator.of(context).pop(true);
+                                            // context.pop(true);
                                           },
                                           buttonText: "Save Recipe",
                                           icon: Symbols.save,
@@ -281,6 +289,23 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                                   if (shouldSave != null && shouldSave) {
                                     viewModel.saveRecipe();
                                   }
+                                } else {
+                                  final snackBar = SnackBar(
+                                    /// need to set following properties for best effect of awesome_snackbar_content
+                                    elevation: 0,
+                                    behavior: SnackBarBehavior.floating,
+                                    backgroundColor: Colors.transparent,
+                                    content: AwesomeSnackbarContent(
+                                      title: 'On Snap!',
+                                      message: state.geminiFailureResponse ??
+                                          'Error message',
+                                      contentType: ContentType.failure,
+                                    ),
+                                  );
+
+                                  ScaffoldMessenger.of(context)
+                                    ..hideCurrentSnackBar()
+                                    ..showSnackBar(snackBar);
                                 }
                               });
                             },
@@ -329,7 +354,7 @@ class _FilterChipSection extends StatelessWidget {
     return HighlightBorderOnHoverWidget(
       borderRadius: BorderRadius.zero,
       child: Container(
-        height: 230,
+        height: 250,
         decoration: BoxDecoration(
           color: Theme.of(context).splashColor.withOpacity(.1),
           border: Border.all(

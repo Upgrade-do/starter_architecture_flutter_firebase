@@ -72,15 +72,25 @@ class ScaffoldWithNavigationBar extends ConsumerWidget {
             label: 'Chat'.hardcoded,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.work_outline),
-            selectedIcon: const Icon(Icons.work),
-            label: 'Jobs'.hardcoded,
+            icon: const Icon(Icons.view_headline_outlined),
+            selectedIcon: const Icon(Icons.view_headline),
+            label: 'Recepies'.hardcoded,
           ),
           NavigationDestination(
             icon: const Icon(Icons.view_headline_outlined),
             selectedIcon: const Icon(Icons.view_headline),
-            label: 'Entries'.hardcoded,
+            label: 'Prompt'.hardcoded,
           ),
+          NavigationDestination(
+            icon: const Icon(Icons.work_outline),
+            selectedIcon: const Icon(Icons.work),
+            label: 'Jobs'.hardcoded,
+          ),
+          // NavigationDestination(
+          //   icon: const Icon(Icons.view_headline_outlined),
+          //   selectedIcon: const Icon(Icons.view_headline),
+          //   label: 'Entries'.hardcoded,
+          // ),
           NavigationDestination(
             icon: const Icon(Icons.person_outline),
             selectedIcon: const Icon(Icons.person),
@@ -122,13 +132,26 @@ class ScaffoldWithNavigationRail extends StatelessWidget {
               NavigationRailDestination(
                 icon: const Icon(Icons.work_outline),
                 selectedIcon: const Icon(Icons.work),
+                label: Text('Recepies'.hardcoded),
+              ),
+
+              NavigationRailDestination(
+                icon: const Icon(Icons.work_outline),
+                selectedIcon: const Icon(Icons.work),
+                label: Text('Prompt'.hardcoded),
+              ),
+
+              NavigationRailDestination(
+                icon: const Icon(Icons.work_outline),
+                selectedIcon: const Icon(Icons.work),
                 label: Text('Jobs'.hardcoded),
               ),
-              NavigationRailDestination(
-                icon: const Icon(Icons.view_headline_outlined),
-                selectedIcon: const Icon(Icons.view_headline),
-                label: Text('Entries'.hardcoded),
-              ),
+
+              // NavigationRailDestination(
+              //     icon: const Icon(Icons.view_headline_outlined),
+              //     selectedIcon: const Icon(Icons.view_headline),
+              //     label: Text('Entries'.hardcoded),
+              //   ),
               NavigationRailDestination(
                 icon: const Icon(Icons.person_outline),
                 selectedIcon: const Icon(Icons.person),

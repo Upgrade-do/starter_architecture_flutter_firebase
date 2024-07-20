@@ -3,7 +3,7 @@ import 'package:starter_architecture_flutter_firebase/screens/in_app/settings/co
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-@RoutePage()
+// @RoutePage()
 class ChangePasscodeScreen extends ConsumerStatefulWidget {
   const ChangePasscodeScreen({super.key});
 

@@ -4,7 +4,7 @@ import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/prompt_image_widget.dart';
 
 
-import '../domain/prompt_model.dart';
+import '../../domain/prompt_model.dart';
 
 class FullPromptDialog extends StatelessWidget {
   const FullPromptDialog({super.key, required this.promptData});

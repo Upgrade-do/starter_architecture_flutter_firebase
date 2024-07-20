@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/presentation/chat_screen.dart';
+import 'package:starter_architecture_flutter_firebase/src/features/prompt/presentation/prompt_screen.dart';
+import 'package:starter_architecture_flutter_firebase/src/features/recepies/presentation/saved_recipes_screen.dart';
+import 'package:starter_architecture_flutter_firebase/src/features/recepies/presentation/widgets/recipe_fullscreen_dialog.dart';
 import 'package:starter_architecture_flutter_firebase/src/routing/app_startup.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/authentication/data/firebase_auth_repository.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/authentication/presentation/custom_profile_screen.dart';
@@ -27,6 +30,8 @@ final _chatNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'chat');
 final _jobsNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'jobs');
 final _entriesNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'entries');
 final _accountNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'account');
+final _recepiesNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'recepies');
+final _promptNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'prompt');
 
 enum AppRoute {
   onboarding,
@@ -41,6 +46,8 @@ enum AppRoute {
   entries,
   profile,
   chat,
+  prompt,
+  recepies
 }
 
 @riverpod
@@ -136,6 +143,49 @@ GoRouter goRouter(GoRouterRef ref) {
             ],
           ),
           StatefulShellBranch(
+            navigatorKey: _recepiesNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/recepies',
+                name: AppRoute.recepies.name,
+                pageBuilder: (context, state) {
+                  return const MaterialPage(
+                    fullscreenDialog: false,
+                    child: SavedRecipesScreen(
+                      canScroll: true,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: _promptNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/prompt',
+                name: AppRoute.prompt.name,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                    child: PromptScreen(
+                  canScroll: true,
+                )),
+                // routes: [
+                //   GoRoute(
+                //     path: 'recepies',
+                //     name: AppRoute.recepies.name,
+                //     parentNavigatorKey: _recepiesNavigatorKey,
+                //      pageBuilder: (context, state) {
+                //   return const MaterialPage(
+                //     fullscreenDialog: false,
+                //     child: RecipeDialogScreen(),
+                //   );
+                // },
+                //   ),
+                // ],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
             navigatorKey: _jobsNavigatorKey,
             routes: [
               GoRoute(
@@ -214,18 +264,18 @@ GoRouter goRouter(GoRouterRef ref) {
               ),
             ],
           ),
-          StatefulShellBranch(
-            navigatorKey: _entriesNavigatorKey,
-            routes: [
-              GoRoute(
-                path: '/entries',
-                name: AppRoute.entries.name,
-                pageBuilder: (context, state) => const NoTransitionPage(
-                  child: EntriesScreen(),
-                ),
-              ),
-            ],
-          ),
+          // StatefulShellBranch(
+          //   navigatorKey: _entriesNavigatorKey,
+          //   routes: [
+          //     GoRoute(
+          //       path: '/entries',
+          //       name: AppRoute.entries.name,
+          //       pageBuilder: (context, state) => const NoTransitionPage(
+          //         child: EntriesScreen(),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           StatefulShellBranch(
             navigatorKey: _accountNavigatorKey,
             routes: [

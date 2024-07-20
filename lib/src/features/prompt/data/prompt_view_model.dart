@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:js_interop';
+
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -98,27 +101,32 @@ class PromptNotifier extends StateNotifier<PromptState> {
 
     try {
       final content = await GeminiService.generateContent(model, prompt);
+      // Parsing the generated content as JSON
+      // final jsonContent = jsonDecode(content.text!);
 
+      // Ensure the JSON structure adheres to the expected format
+      // final recipe = Recipe.fromGeneratedContent(jsonContent);
       if (content.text != null && content.text!.contains(badImageFailure)) {
         state = state.copyWith(
           geminiFailureResponse: badImageFailure,
         );
       } else {
-        state = state.copyWith(
+        final state1 = state.copyWith(
           recipe: Recipe.fromGeneratedContent(content),
         );
+        state = state1;
       }
     } catch (error) {
       state = state.copyWith(
-        geminiFailureResponse: 'Failed to reach Gemini. \n\n$error',
+        geminiFailureResponse: 'Failed to reach Gemini. ${error.toString()}',
       );
       if (kDebugMode) {
-        print(error);
+        debugPrint(error.toString());
       }
     }
 
     state = state.copyWith(loadingNewRecipe: false);
-    resetPrompt();
+    // resetPrompt();
   }
 
   void saveRecipe() {

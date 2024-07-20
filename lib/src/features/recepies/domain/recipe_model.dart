@@ -23,7 +23,7 @@ class Recipe {
   final List<String> ingredients;
   final List<String> instructions;
   final String cuisine;
-  final List<String> allergens;
+  final String allergens;
   final String servings;
   final Map<String, dynamic> nutritionInformation;
   int rating;
@@ -33,8 +33,9 @@ class Recipe {
     assert(content.text != null);
 
     final validJson = cleanJson(content.text!);
+    print(validJson);
     final json = jsonDecode(validJson);
-
+    // print(json);
     if (json
         case {
           "ingredients": List<dynamic> ingredients,
@@ -45,7 +46,7 @@ class Recipe {
           "description": String description,
           "servings": String servings,
           "nutritionInformation": Map<String, dynamic> nutritionInformation,
-          "allergens": List<dynamic> allergens,
+          "allergens": String allergens,
         }) {
       return Recipe(
           id: id,
@@ -53,7 +54,7 @@ class Recipe {
           ingredients: ingredients.map((i) => i.toString()).toList(),
           instructions: instructions.map((i) => i.toString()).toList(),
           nutritionInformation: nutritionInformation,
-          allergens: allergens.map((i) => i.toString()).toList(),
+          allergens: allergens,
           cuisine: cuisine,
           servings: servings,
           description: description);
@@ -88,7 +89,7 @@ class Recipe {
           "description": String description,
           "servings": String servings,
           "nutritionInformation": Map<String, dynamic> nutritionInformation,
-          "allergens": List<dynamic> allergens,
+          "allergens": String allergens,
           "rating": int rating
         }) {
       return Recipe(
@@ -97,7 +98,7 @@ class Recipe {
         ingredients: ingredients.map((i) => i.toString()).toList(),
         instructions: instructions.map((i) => i.toString()).toList(),
         nutritionInformation: nutritionInformation,
-        allergens: allergens.map((i) => i.toString()).toList(),
+        allergens: allergens,
         cuisine: cuisine,
         servings: servings,
         description: description,

@@ -17,7 +17,7 @@ import 'package:natasha/entities/kyc/kyc_status/kyc_status.dart';
 import 'package:natasha/notifiers/account_manager_provider_notifier.dart';
 import 'package:natasha/notifiers/client_provider_notifier.dart';
 
-@RoutePage()
+// @RoutePage()
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 

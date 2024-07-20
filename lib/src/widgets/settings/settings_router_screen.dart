@@ -27,7 +27,7 @@ final updatePasscodeProvider = StateProvider<UpdatePasscode>(
   (_) => UpdatePasscode(),
 );
 
-@RoutePage()
+// // @RoutePage()
 class SettingsRouterScreen extends ConsumerStatefulWidget {
   const SettingsRouterScreen({super.key});
 

@@ -6,8 +6,6 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/recepies/domain/recipe_model.dart';
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 
-
-
 class RecipeDisplayWidget extends StatelessWidget {
   const RecipeDisplayWidget({
     super.key,
@@ -194,7 +192,7 @@ class RecipeDisplayWidget extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(recipe.allergens.join(', '))
+                        Text(recipe.allergens)
                       ],
                     ),
                     TableRow(children: [

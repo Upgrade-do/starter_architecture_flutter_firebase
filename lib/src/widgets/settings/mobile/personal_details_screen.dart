@@ -28,7 +28,7 @@ import 'package:natasha/entities/settings/update_address.dart';
 import 'package:natasha/notifiers/index.dart';
 import 'package:natasha/notifiers/update_user_details_provider_notifier.dart';
 
-@RoutePage()
+// @RoutePage()
 class PersonalDetailsMobileScreen extends ConsumerStatefulWidget {
   const PersonalDetailsMobileScreen({super.key});
 

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:natasha/notifiers/account_manager_provider_notifier.dart';
 
-@RoutePage()
+// @RoutePage()
 class AccountManagerInfoMobileScreen extends ConsumerStatefulWidget {
   const AccountManagerInfoMobileScreen({super.key});
 

@@ -7,7 +7,7 @@ import 'package:starter_architecture_flutter_firebase/widgets/localization/teapa
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-@RoutePage()
+// @RoutePage()
 class ManageWalletsMobileScreen extends ConsumerStatefulWidget {
   const ManageWalletsMobileScreen({super.key});
 
