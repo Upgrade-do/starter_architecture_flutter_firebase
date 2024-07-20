@@ -964,6 +964,8 @@ PODS:
     - Flutter
   - desktop_webview_auth (0.0.1):
     - Flutter
+  - device_info_plus (0.0.1):
+    - Flutter
   - Firebase/Auth (10.28.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.28.0)
@@ -1236,6 +1238,7 @@ DEPENDENCIES:
   - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - desktop_webview_auth (from `.symlinks/plugins/desktop_webview_auth/ios`)
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - Firebase/Auth
   - Firebase/Core
   - firebase_app_check (from `.symlinks/plugins/firebase_app_check/ios`)
@@ -1290,6 +1293,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/cloud_firestore/ios"
   desktop_webview_auth:
     :path: ".symlinks/plugins/desktop_webview_auth/ios"
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
   firebase_app_check:
     :path: ".symlinks/plugins/firebase_app_check/ios"
   firebase_auth:
@@ -1322,6 +1327,7 @@ SPEC CHECKSUMS:
   camera_avfoundation: dd002b0330f4981e1bbcb46ae9b62829237459a4
   cloud_firestore: 9b13aee630ba3bc9e853ab72be3e7630e2e9c075
   desktop_webview_auth: d645139460ef203d50bd0cdb33356785dd939cce
+  device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
   Firebase: 5121c624121af81cbc81df3bda414b3c28c4f3c3
   firebase_app_check: e0426ec7af955cb12d8475e3aaec3b0d05cfd678
   firebase_auth: 7970a5b78ab99bb9a912c2ed6e92f1e5483ad9f5

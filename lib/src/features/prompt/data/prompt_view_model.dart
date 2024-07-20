@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:js_interop';
-
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
