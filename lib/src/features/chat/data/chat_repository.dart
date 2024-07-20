@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:starter_architecture_flutter_firebase/src/extensions/extensions.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/data/storage_repository.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/domain/message.dart';
-import 'package:starter_architecture_flutter_firebase/src/features/prompt/prompt_model.dart';
+import 'package:starter_architecture_flutter_firebase/src/features/prompt/domain/prompt_model.dart';
 import 'package:uuid/uuid.dart';
 
 //   final model =

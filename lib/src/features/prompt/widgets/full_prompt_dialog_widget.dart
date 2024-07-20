@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/prompt_image_widget.dart';
 
-import '../../../theme.dart';
-import '../../../widgets/prompt_image_widget.dart';
-import '../prompt_model.dart';
+
+import '../domain/prompt_model.dart';
 
 class FullPromptDialog extends StatelessWidget {
   const FullPromptDialog({super.key, required this.promptData});

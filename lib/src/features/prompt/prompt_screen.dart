@@ -1,8 +1,9 @@
+import 'package:starter_architecture_flutter_firebase/src/features/prompt/application/prompt_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/util/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
-import 'package:starter_architecture_flutter_firebase/src/features/prompt/prompt_view_model.dart';
+import 'package:starter_architecture_flutter_firebase/src/features/prompt/data/prompt_view_model.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/recepies/presentation/widgets/recipe_fullscreen_dialog.dart';
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/filter_chip_selection_input.dart';
@@ -31,7 +32,8 @@ class PromptScreen extends ConsumerStatefulWidget {
 class _PromptScreenState extends ConsumerState<PromptScreen> {
   @override
   Widget build(BuildContext context) {
-    final viewModel = ref.watch<PromptViewModel>();
+    final viewModel = ref.watch(promptNotifierProvider.notifier);
+    final state = ref.watch(promptNotifierProvider);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -103,7 +105,7 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                           },
                           allValues: BasicIngredientsFilter.values,
                           selectedValues:
-                              viewModel.userPrompt.selectedBasicIngredients,
+                              state.userPrompt.selectedBasicIngredients,
                         ),
                       ),
                     ),
@@ -118,7 +120,7 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                                 selected as Set<CuisineFilter>);
                           },
                           allValues: CuisineFilter.values,
-                          selectedValues: viewModel.userPrompt.selectedCuisines,
+                          selectedValues: state.userPrompt.selectedCuisines,
                         ),
                       ),
                     ),
@@ -135,7 +137,7 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                           },
                           allValues: DietaryRestrictionsFilter.values,
                           selectedValues:
-                              viewModel.userPrompt.selectedDietaryRestrictions,
+                              state.userPrompt.selectedDietaryRestrictions,
                         ),
                       ),
                     ),
@@ -157,7 +159,7 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                                 },
                                 allValues: CuisineFilter.values,
                                 selectedValues:
-                                    viewModel.userPrompt.selectedCuisines,
+                                    state.userPrompt.selectedCuisines,
                               ),
                             ),
                           ),
@@ -174,8 +176,8 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                                       selected as Set<BasicIngredientsFilter>);
                                 },
                                 allValues: BasicIngredientsFilter.values,
-                                selectedValues: viewModel
-                                    .userPrompt.selectedBasicIngredients,
+                                selectedValues:
+                                    state.userPrompt.selectedBasicIngredients,
                               ),
                             ),
                           ),
@@ -193,7 +195,7 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                                       as Set<DietaryRestrictionsFilter>);
                                 },
                                 allValues: DietaryRestrictionsFilter.values,
-                                selectedValues: viewModel
+                                selectedValues: state
                                     .userPrompt.selectedDietaryRestrictions,
                               ),
                             ),
@@ -206,7 +208,8 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                     child: _TextField(
                       controller: viewModel.promptTextController,
                       onChanged: (value) {
-                        viewModel.notify();
+                        // viewModel..notify();
+                        setState(() {});
                       },
                     ),
                   ),
@@ -258,12 +261,12 @@ class _PromptScreenState extends ConsumerState<PromptScreen> {
                             onPressed: () async {
                               await viewModel.submitPrompt().then((_) async {
                                 if (!context.mounted) return;
-                                if (viewModel.recipe != null) {
+                                if (state.recipe != null) {
                                   bool? shouldSave = await showDialog<bool>(
                                     context: context,
                                     barrierDismissible: false,
                                     builder: (context) => RecipeDialogScreen(
-                                      recipe: viewModel.recipe!,
+                                      recipe: state.recipe!,
                                       actions: [
                                         MarketplaceButton(
                                           onPressed: () {

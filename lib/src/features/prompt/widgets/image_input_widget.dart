@@ -1,18 +1,21 @@
-import 'package:ai_recipe_generation/widgets/highlight_border_on_hover_widget.dart';
 import 'package:camera/camera.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:provider/provider.dart';
+import 'package:starter_architecture_flutter_firebase/src/features/prompt/application/prompt_provider.dart';
+import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/add_image_widget.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/highlight_border_on_hover_widget.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/prompt_image_widget.dart';
 
-import '../../../main.dart';
-import '../../../theme.dart';
 import '../../../util/device_info.dart';
-import '../../../widgets/add_image_widget.dart';
-import '../../../widgets/prompt_image_widget.dart';
-import '../prompt_view_model.dart';
 
-class AddImageToPromptWidget extends StatefulWidget {
+late CameraDescription camera;
+late BaseDeviceInfo deviceInfo;
+
+class AddImageToPromptWidget extends ConsumerStatefulWidget {
   const AddImageToPromptWidget({
     super.key,
     this.width = 100,
@@ -23,10 +26,12 @@ class AddImageToPromptWidget extends StatefulWidget {
   final double height;
 
   @override
-  State<AddImageToPromptWidget> createState() => _AddImageToPromptWidgetState();
+  ConsumerState<AddImageToPromptWidget> createState() =>
+      _AddImageToPromptWidgetState();
 }
 
-class _AddImageToPromptWidgetState extends State<AddImageToPromptWidget> {
+class _AddImageToPromptWidgetState
+    extends ConsumerState<AddImageToPromptWidget> {
   final ImagePicker picker = ImagePicker();
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
@@ -102,7 +107,8 @@ class _AddImageToPromptWidgetState extends State<AddImageToPromptWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<PromptViewModel>();
+    final viewModel = ref.watch(promptNotifierProvider.notifier);
+    final state = ref.watch(promptNotifierProvider);
 
     return HighlightBorderOnHoverWidget(
       borderRadius: BorderRadius.zero,
@@ -134,7 +140,7 @@ class _AddImageToPromptWidgetState extends State<AddImageToPromptWidget> {
                         viewModel.addImage(image);
                       }),
                 ),
-                for (var image in viewModel.userPrompt.images)
+                for (var image in state.userPrompt.images)
                   Padding(
                     padding: const EdgeInsets.all(MarketplaceTheme.spacing7),
                     child: PromptImage(

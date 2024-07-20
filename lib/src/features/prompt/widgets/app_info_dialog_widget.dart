@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-
-import '../../../theme.dart';
+import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 
 class AppInfoDialog extends StatelessWidget {
   const AppInfoDialog({super.key});

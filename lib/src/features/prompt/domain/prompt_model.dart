@@ -1,19 +1,19 @@
 import 'package:image_picker/image_picker.dart';
 
-import '../../util/filter_chip_enums.dart';
+import '../../../util/filter_chip_enums.dart';
 
 class PromptData {
   PromptData({
     required this.images,
     required this.textInput,
-    Set<BasicIngredientsFilter>? basicIngredients,
-    Set<CuisineFilter>? cuisines,
-    Set<DietaryRestrictionsFilter>? dietaryRestrictions,
+    Set<BasicIngredientsFilter>? selectedBasicIngredients,
+    Set<CuisineFilter>? selectedCuisines,
+    Set<DietaryRestrictionsFilter>? selectedDietaryRestrictions,
     List<String>? additionalTextInputs,
   })  : additionalTextInputs = additionalTextInputs ?? [],
-        selectedBasicIngredients = basicIngredients ?? {},
-        selectedCuisines = cuisines ?? {},
-        selectedDietaryRestrictions = dietaryRestrictions ?? {};
+        selectedBasicIngredients = selectedBasicIngredients ?? {},
+        selectedCuisines = selectedCuisines ?? {},
+        selectedDietaryRestrictions = selectedDietaryRestrictions ?? {};
 
   PromptData.empty()
       : images = [],
@@ -50,17 +50,19 @@ class PromptData {
     List<XFile>? images,
     String? textInput,
     List<String>? additionalTextInputs,
-    Set<BasicIngredientsFilter>? basicIngredients,
-    Set<CuisineFilter>? cuisineSelections,
-    Set<DietaryRestrictionsFilter>? dietaryRestrictions, required List<CuisineFilter> selectedCuisines, required List<DietaryRestrictionsFilter> selectedDietaryRestrictions, required List<BasicIngredientsFilter> selectedBasicIngredients,
+    Set<BasicIngredientsFilter>? selectedBasicIngredients,
+    Set<CuisineFilter>? selectedCuisines,
+    Set<DietaryRestrictionsFilter>? selectedDietaryRestrictions,
   }) {
     return PromptData(
       images: images ?? this.images,
       textInput: textInput ?? this.textInput,
       additionalTextInputs: additionalTextInputs ?? this.additionalTextInputs,
-      basicIngredients: basicIngredients ?? selectedBasicIngredients,
-      cuisines: cuisineSelections ?? selectedCuisines,
-      dietaryRestrictions: dietaryRestrictions ?? selectedDietaryRestrictions,
+      selectedBasicIngredients:
+          selectedBasicIngredients ?? this.selectedBasicIngredients,
+      selectedCuisines: selectedCuisines ?? this.selectedCuisines,
+      selectedDietaryRestrictions:
+          selectedDietaryRestrictions ?? this.selectedDietaryRestrictions,
     );
   }
 }

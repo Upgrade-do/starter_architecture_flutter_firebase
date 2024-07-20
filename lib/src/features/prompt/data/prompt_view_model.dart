@@ -7,8 +7,8 @@ import 'package:starter_architecture_flutter_firebase/src/features/chat/data/cha
 import 'package:starter_architecture_flutter_firebase/src/features/recepies/data/recepies_repository.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/recepies/domain/recipe_model.dart';
 
-import '../../util/filter_chip_enums.dart';
-import 'prompt_model.dart';
+import '../../../util/filter_chip_enums.dart';
+import '../domain/prompt_model.dart';
 
 class PromptState {
   PromptState({
@@ -85,12 +85,8 @@ class PromptNotifier extends StateNotifier<PromptState> {
   }
 
   PromptData buildPrompt() {
-    return PromptData(
-      images: state.userPrompt.images,
+    return state.userPrompt.copyWith(
       textInput: mainPrompt,
-      basicIngredients: state.userPrompt.selectedBasicIngredients,
-      cuisines: state.userPrompt.selectedCuisines,
-      dietaryRestrictions: state.userPrompt.selectedDietaryRestrictions,
       additionalTextInputs: [format],
     );
   }
@@ -134,10 +130,10 @@ class PromptNotifier extends StateNotifier<PromptState> {
   void addBasicIngredients(Set<BasicIngredientsFilter> ingredients) {
     state = state.copyWith(
       userPrompt: state.userPrompt.copyWith(
-        selectedBasicIngredients: [
+        selectedBasicIngredients: {
           ...state.userPrompt.selectedBasicIngredients,
           ...ingredients
-        ],
+        },
       ),
     );
   }
@@ -145,7 +141,7 @@ class PromptNotifier extends StateNotifier<PromptState> {
   void addCategoryFilters(Set<CuisineFilter> categories) {
     state = state.copyWith(
       userPrompt: state.userPrompt.copyWith(
-        selectedCuisines: [...state.userPrompt.selectedCuisines, ...categories],
+        selectedCuisines: {...state.userPrompt.selectedCuisines, ...categories},
       ),
     );
   }
@@ -154,10 +150,10 @@ class PromptNotifier extends StateNotifier<PromptState> {
       Set<DietaryRestrictionsFilter> restrictions) {
     state = state.copyWith(
       userPrompt: state.userPrompt.copyWith(
-        selectedDietaryRestrictions: [
+        selectedDietaryRestrictions: {
           ...state.userPrompt.selectedDietaryRestrictions,
           ...restrictions
-        ],
+        },
       ),
     );
   }
