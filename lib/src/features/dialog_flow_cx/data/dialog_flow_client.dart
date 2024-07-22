@@ -14,7 +14,7 @@ class AuthClient {
     final client = await clientViaServiceAccount(credentials, _scopes);
 
     // Specify the base URL for the correct region
-    final endpoint = 'https://{Your-agents-location}-dialogflow.googleapis.com/'; // {us-central1}
+    const endpoint = 'https://us-dialogflow.googleapis.com/'; // {us-central1}
 
     return df.DialogflowApi(client, rootUrl: endpoint);
   }
