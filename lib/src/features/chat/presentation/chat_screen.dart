@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/application/get_all_messages_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/presentation/send_image_screen.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/presentation/widgets/messages_list.dart';
+import 'package:starter_architecture_flutter_firebase/src/features/dialog_flow_cx/data/dialog_flow_client.dart';
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
@@ -20,6 +21,11 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   FocusNode? textFieldNode;
   // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
+    final _chatClient = ChatbotClient(
+    projectId: 'your-project-id',
+    agentId: 'your-agent-id',
+    location: 'your-agent-location',
+  );
 
   @override
   void initState() {
