@@ -21,10 +21,10 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   FocusNode? textFieldNode;
   // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
-    final _chatClient = ChatbotClient(
-    projectId: 'your-project-id',
-    agentId: 'your-agent-id',
-    location: 'your-agent-location',
+  final _chatClient = ChatbotClient(
+projectId: 'vaca-esquizofrenica',
+agentId: '115028904647127410727',
+location: 'us',
   );
 
   @override

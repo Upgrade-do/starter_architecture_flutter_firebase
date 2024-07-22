@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "vaca-esquizofrenica",
+  "private_key_id": "966b612cbb90fb76d9cc61dcb17f542dfab66a8c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDcAklVLxAmV4af\nvHMXJ1WewVIq1mCDlSkkxNoynd7UqojbV6GbS9CcaZQVCocNzYa9rMC8DEVE+Kk7\nxih3EU/PqFruCskHkl1EYL/44d8xD7L94Twu/EGHf20TiIce/6G5ZY7CqKRmmKqw\niTrmRcZFx5N005mQoQVD2sfOt8levbfK7NCLhNcYXrJnKhxJ7caVbkMjKMvBDJZf\nsxyRtQ3lrLzh1MYQOF4cCZBYVv+BZ/gnTdvzyCrNaRByk4exMJiXOra+H2lJEaC6\nZZAK16NH0xSUFbCnhc8+5y2+ogCGWgoWmmdEyLGXlx4DHFChJpE8VMQEqRnbuODX\n4hhDFfzFAgMBAAECggEAZWmEZgigmBvmSUEzh+uwstIHzwksSdr6sSEwNv7AVSUa\nmoilTJFA4qhkAuLsZ/dh8ZJs8QFy+JzqXUw1INVRBbZj27ALBDt6VGeIde+f0tya\ntB4bgMj0Z8HcBJH9PtO0t2HR0Xas+UHMBD3tcXGeOFILbWGQOrOOWr3BNk9POiS8\nfL88lPmegQwCsUfXhHW82Nn+yoSIa5WZ1Tq4DP0hHTH+84bgz+/pEvob6qgO4kx1\nbv4cGvIVL0+Hnaa78NcdSQetUhpdS7DUFU+LuileNtetF9yO7lXCk2I1Ma6w7awK\nr7QBPIcZSSNQKQhAxlfdELszmQsiBJUSeQ/EWXO1TQKBgQDxxPCeV0qCDA2tIMEs\n7COkGO9WfTr5OJ/xK36BD+XgqZ32MsLYGn8wqmQ8ZEwoFW73WgVEfR720+d07PZ6\naWWIaenh5vLl5F/24U4TNEkjRDiRkTXS9Rad2GSLvJLMmlZYVH/z/APQYzVjn4CY\nHP9yb+HqfQj8GkQFOu2Hdfg4rwKBgQDo9XRB1C2xZ2B9CASCAvFm6UgbcoVraqvE\nTlgR676zqNu3nLUqwYp+FhaFH4YwUpStn3Mw7I/ue2lC8EbHTaYDM572ISG423F4\n++pwHuR1ytOjNYC8Pcv4Zq59q9Nv2VzdyMrK3rxfgxGpEJCuLlYxCes9wv18SfOB\neIw32D4WywKBgAu7LqHAQpFE3HUGHdl8K86Oly5vLSliogAlyCGjD9hy4oNLu0CZ\nKIrH+c0kYL2hLJ079P15xMLdTWHTDbKq4o5X9U1M04RsLGviStOLufDIIqaNkTsH\nQW2vTlGpeMYMxxvKHdtM4zJ9Xd3To32+CncXDrM+Fe2FqL9IOLZV9xFpAoGBAIrv\niOyRzMaXLvaix316n9qOmtCz1lqf/d1QFDpr7QpdVN0G+w2K7DwSlE/E41UCi2WZ\nSSwOijDjLX4cqznGV5JlQRLt45zKU7yiEcnYwsx1sQ8Po72g5Xs6UirlRW7Zpgcn\n77paaOJV2zyHgqI/RGxuy/vDxUZRHIdFC+tqbm1NAoGBAL5wEtJMNOx2OuOnVm5g\ntoOShUoasuIy4AGzdMO2MV4J/rCdXaEv6AYDLFkXHpFUDx5iXpEcNwKz+Ks1Bpis\nYCvK52OcNfLuAWqGCW08i1zhcjiHMQcg+4IoEcq1Fq/K3jvUvWFDDq7B7dh0YFlB\nW/bv533eYStNC6Xtt/ywlqA3\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-s0lwn@vaca-esquizofrenica.iam.gserviceaccount.com",
+  "client_id": "115028904647127410727",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-s0lwn%40vaca-esquizofrenica.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
