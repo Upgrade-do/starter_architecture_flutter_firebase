@@ -181,11 +181,11 @@ class _TeapaymentLocalizationProvider extends InheritedWidget {
   // Locale get startLocale => parent.startLocale;
 
   /// Change app locale
-  Future<void> setLocale(Locale _locale) async {
+  Future<void> setLocale(Locale locale) async {
     // Check old locale
-    if (_locale != _localeState.locale) {
-      assert(parent.supportedLocales.contains(_locale));
-      await _localeState.setLocale(_locale);
+    if (locale != _localeState.locale) {
+      assert(parent.supportedLocales.contains(locale));
+      await _localeState.setLocale(locale);
     }
   }
 

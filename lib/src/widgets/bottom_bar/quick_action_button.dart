@@ -1,5 +1,4 @@
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
-import 'package:starter_architecture_flutter_firebase/themes/icons/thanos_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -36,11 +35,11 @@ class QuickActionButton extends ConsumerWidget {
                   color: customAppTheme.colorsPalette.primary,
                   borderRadius: BorderRadius.circular(34),
                 ),
-                child: Center(
-                  child: Icon(
-                    ThanosIcons.bottomBarQuickActions,
-                    color: customAppTheme.colorsPalette.white,
-                  ),
+                child: const Center(
+                  // child: Icon(
+                  //   ThanosIcons.bottomBarQuickActions,
+                  //   color: customAppTheme.colorsPalette.white,
+                  // ),
                 ),
               ),
             ),

@@ -17,7 +17,6 @@ import 'package:starter_architecture_flutter_firebase/widgets/input_field/select
 import 'package:starter_architecture_flutter_firebase/widgets/localization/teapayment_localization.dart';
 import 'package:starter_architecture_flutter_firebase/widgets/toast_message.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:natasha/core/screen_representable/screen_states.dart';
 import 'package:natasha/entities/countries/country.dart';
@@ -466,65 +465,65 @@ class _PersonalDetailsMobileScreenState
                   String.fromCharCode(match.group(0)!.codeUnitAt(0) + 127397),
             );
 
-    final _firstName = userDetails?.firstName ?? '';
-    _firstNameController.text = _firstName;
+    final firstName0 = userDetails?.firstName ?? '';
+    _firstNameController.text = firstName0;
     _firstNameController.selection =
-        TextSelection.fromPosition(TextPosition(offset: _firstName.length));
+        TextSelection.fromPosition(TextPosition(offset: firstName0.length));
 
-    final _lastName = userDetails?.lastName ?? '';
-    _lastNameController.text = _lastName;
+    final lastName0 = userDetails?.lastName ?? '';
+    _lastNameController.text = lastName0;
     _lastNameController.selection =
-        TextSelection.fromPosition(TextPosition(offset: _lastName.length));
+        TextSelection.fromPosition(TextPosition(offset: lastName0.length));
 
-    final _fullName = userDetails?.fullLegalName ?? '$firstName $lastName';
-    _fullNameController.text = _fullName;
+    final fullName = userDetails?.fullLegalName ?? '$firstName $lastName';
+    _fullNameController.text = fullName;
     _fullNameController.selection =
-        TextSelection.fromPosition(TextPosition(offset: _fullName.length));
+        TextSelection.fromPosition(TextPosition(offset: fullName.length));
 
-    final _address = userDetails?.addressLine1 ?? '';
-    _addressLine1Controller.text = _address;
+    final address = userDetails?.addressLine1 ?? '';
+    _addressLine1Controller.text = address;
     _addressLine1Controller.selection =
-        TextSelection.fromPosition(TextPosition(offset: _address.length));
+        TextSelection.fromPosition(TextPosition(offset: address.length));
 
     _emailCodeController.text = email;
     _emailCodeController.selection =
         TextSelection.fromPosition(TextPosition(offset: email.length));
 
-    final _phone = '${phone?.callingCode ?? ''} ${phone?.phoneNumber ?? ''} ';
-    _phoneToUpdate = _phone;
-    _phoneLine1Controller.text = _phone;
+    final phone0 = '${phone?.callingCode ?? ''} ${phone?.phoneNumber ?? ''} ';
+    _phoneToUpdate = phone0;
+    _phoneLine1Controller.text = phone0;
     _phoneLine1Controller.selection = TextSelection.fromPosition(
-      TextPosition(offset: _phone.length),
+      TextPosition(offset: phone0.length),
     );
 
-    final _countryCode = phone?.callingCode ?? '';
-    _countryCodeTextEditingController.text = _countryCode;
+    final countryCode = phone?.callingCode ?? '';
+    _countryCodeTextEditingController.text = countryCode;
     _countryCodeTextEditingController.selection = TextSelection.fromPosition(
-      TextPosition(offset: _countryCode.length),
+      TextPosition(offset: countryCode.length),
     );
 
-    final _phoneNumber = phone?.phoneNumber ?? '';
-    _phoneTextEditingController.text = _phoneNumber;
+    final phoneNumber = phone?.phoneNumber ?? '';
+    _phoneTextEditingController.text = phoneNumber;
     _phoneTextEditingController.selection = TextSelection.fromPosition(
-      TextPosition(offset: _phoneNumber.length),
+      TextPosition(offset: phoneNumber.length),
     );
 
-    final _city = userDetails?.city ?? '';
-    _cityController.text = _city;
+    final city = userDetails?.city ?? '';
+    _cityController.text = city;
     _cityController.selection = TextSelection.fromPosition(
-      TextPosition(offset: _city.length),
+      TextPosition(offset: city.length),
     );
 
-    final _postalCode = userDetails?.postalCode ?? '';
-    _postalCodeController.text = _postalCode;
+    final postalCode = userDetails?.postalCode ?? '';
+    _postalCodeController.text = postalCode;
     _postalCodeController.selection = TextSelection.fromPosition(
-      TextPosition(offset: _postalCode.length),
+      TextPosition(offset: postalCode.length),
     );
 
-    final _nationality = '$flag ${userDetails?.nationality ?? ''}';
-    _nationalityController.text = _nationality;
+    final nationality = '$flag ${userDetails?.nationality ?? ''}';
+    _nationalityController.text = nationality;
     _nationalityController.selection = TextSelection.fromPosition(
-      TextPosition(offset: _nationality.length),
+      TextPosition(offset: nationality.length),
     );
   }
 
@@ -582,10 +581,10 @@ class _PersonalDetailsMobileScreenState
 
   Future<void> _validateAddressFields(UpdateAddress newAddress) async {
     final userDetails = ref.read(clientInfoProviderNotifier)?.details;
-    final _currentNationality = userDetails?.nationality ?? '';
-    final _currentCity = userDetails?.city ?? '';
-    final _currentAddress = userDetails?.addressLine1 ?? '';
-    final _currentPostalCode = userDetails?.postalCode ?? '';
+    final currentNationality = userDetails?.nationality ?? '';
+    final currentCity = userDetails?.city ?? '';
+    final currentAddress = userDetails?.addressLine1 ?? '';
+    final currentPostalCode = userDetails?.postalCode ?? '';
 
     final customAppTheme = ref.watch(appThemeProvider);
 
@@ -604,10 +603,10 @@ class _PersonalDetailsMobileScreenState
     final city = newAddress.city ?? '';
 
     final addressDidChange =
-        isNationalityAvailable && nationality != _currentNationality ||
-            isAddressAvailable && addressLine1 != _currentAddress ||
-            isPostalCodeAvailable && postalCode != _currentPostalCode ||
-            isCityAvailable && city != _currentCity;
+        isNationalityAvailable && nationality != currentNationality ||
+            isAddressAvailable && addressLine1 != currentAddress ||
+            isPostalCodeAvailable && postalCode != currentPostalCode ||
+            isCityAvailable && city != currentCity;
 
     if (addressDidChange) {
       await _updateAddress(newAddress, customAppTheme);
@@ -625,7 +624,7 @@ class _PersonalDetailsMobileScreenState
   }
 
   Future<void> _validatePhoneFields(RequestUpdatePhone newPhone) async {
-    final _phone = ref.read(clientInfoProviderNotifier)?.phone;
+    final phone = ref.read(clientInfoProviderNotifier)?.phone;
 
     final isPhoneAvailable = newPhone.newPhone != null &&
         newPhone.newPhone?.phoneNumber != null &&
@@ -635,11 +634,11 @@ class _PersonalDetailsMobileScreenState
     final newPhoneNumber = newPhone.newPhone?.phoneNumber ?? '';
     final newCountryCode = newPhone.newPhone?.callingCode ?? '';
 
-    final _phoneNumber = _phone?.phoneNumber ?? '';
-    final _countryCode = _phone?.callingCode ?? '';
+    final phoneNumber = phone?.phoneNumber ?? '';
+    final countryCode = phone?.callingCode ?? '';
 
-    if (isPhoneAvailable && (newPhoneNumber != _phoneNumber) ||
-        (newCountryCode != _countryCode)) {
+    if (isPhoneAvailable && (newPhoneNumber != phoneNumber) ||
+        (newCountryCode != countryCode)) {
       try {
         await ref
             .read(requestUpdatePhoneNotifierProvider.notifier)
@@ -671,7 +670,7 @@ class _PersonalDetailsMobileScreenState
   }
 
   Future<void> _validateEmailFields(RequestUpdateEmail newEmail) async {
-    final _currentEmail = ref.read(clientInfoProviderNotifier)?.email ?? '';
+    final currentEmail = ref.read(clientInfoProviderNotifier)?.email ?? '';
     final customAppTheme = ref.watch(appThemeProvider);
 
     final isEmailAvailable =
@@ -679,7 +678,7 @@ class _PersonalDetailsMobileScreenState
 
     final email = newEmail.newEmail ?? '';
 
-    if (isEmailAvailable && email != _currentEmail) {
+    if (isEmailAvailable && email != currentEmail) {
       try {
         await ref
             .read(requestUpdateEmailNotifierProvider.notifier)
@@ -805,8 +804,8 @@ class _PersonalDetailsMobileScreenState
               message: 'settings.change_phone.text',
               title: 'settings.change_phone.title',
               onButtonPress: () async {
-                final _storage = SecureStoreManager.instance;
-                final _prefs = SharedPreferenceManager.instance;
+                final storage = SecureStoreManager.instance;
+                final prefs = SharedPreferenceManager.instance;
 
                 await ref
                     .read(authenticationNotifierProvider.notifier)
@@ -814,8 +813,8 @@ class _PersonalDetailsMobileScreenState
                     .then((_) async {
                   ref.read(clientInfoRequestProviderNotifier.notifier).reset();
 
-                  await _prefs.writeBiometrics(false);
-                  await _storage.deleteAll();
+                  await prefs.writeBiometrics(false);
+                  await storage.deleteAll();
 
                   context.router.popUntilRoot();
                   await context.router.replaceAll([const OutOfAppRoute()]);

@@ -70,15 +70,15 @@ class _InputAmountTextFieldState extends ConsumerState<InputAmountTextField> {
   }
 
   String get regionRegularExpression {
-    final _locale = ref.read(clientInfoProviderNotifier)?.countryOfResidence;
-    return europeanCodes.contains(_locale)
+    final locale = ref.read(clientInfoProviderNotifier)?.countryOfResidence;
+    return europeanCodes.contains(locale)
         ? europeanFromating
         : americanFormating;
   }
 
   bool get shouldReplaceTheComas {
-    final _locale = ref.read(clientInfoProviderNotifier)?.countryOfResidence;
-    return europeanCodes.contains(_locale);
+    final locale = ref.read(clientInfoProviderNotifier)?.countryOfResidence;
+    return europeanCodes.contains(locale);
   }
 
   @override

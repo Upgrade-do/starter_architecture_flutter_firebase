@@ -71,8 +71,8 @@ class _PersonalDetailsCheckEmailState
               message: 'settings.change_email.text',
               title: 'settings.change_email.title',
               onButtonPress: () async {
-                final _storage = SecureStoreManager.instance;
-                final _prefs = SharedPreferenceManager.instance;
+                final storage = SecureStoreManager.instance;
+                final prefs = SharedPreferenceManager.instance;
 
                 await ref
                     .read(authenticationNotifierProvider.notifier)
@@ -80,8 +80,8 @@ class _PersonalDetailsCheckEmailState
                     .then((_) async {
                   ref.read(clientInfoRequestProviderNotifier.notifier).reset();
 
-                  await _prefs.writeBiometrics(false);
-                  await _storage.deleteAll();
+                  await prefs.writeBiometrics(false);
+                  await storage.deleteAll();
 
                   context.router.popUntilRoot();
                   await context.router.replaceAll([const OutOfAppRoute()]);

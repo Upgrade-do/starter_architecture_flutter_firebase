@@ -22,8 +22,8 @@ class EmailInputField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _registration = ref.read(startRegistrationRequestProvider);
-    final _validateRegistrationRequest = ref.read(validateRegistrationRequest);
+    final registration = ref.read(startRegistrationRequestProvider);
+    final validateRegistrationRequest = ref.read(validateRegistrationRequest);
 
     return ref.watch(_watchIsHidden)
         ? InputField(
@@ -32,8 +32,8 @@ class EmailInputField extends ConsumerWidget {
             keyboardType: TextInputType.emailAddress,
             controller: _emailController,
             onChanged: (email) {
-              _validateRegistrationRequest.email = email;
-              _registration.email = email;
+              validateRegistrationRequest.email = email;
+              registration.email = email;
               _onTextFieldChanged(email);
             },
             validator: (value) {

@@ -29,7 +29,6 @@ class Localization {
 
     if (valuesToBeReplacedInTranslation == null) {
       String? value = translations?.get(translationKey);
-      if (value == null) return translationKey;
       if (value.isEmpty) {
         return _fallbackTranslations?.get(translationKey) ?? translationKey;
       }

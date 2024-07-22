@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/application/camera_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/application/camera_service.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/application/get_all_messages_provider.dart';
@@ -182,7 +181,10 @@ class _SendImageScreenState extends ConsumerState<SendImageScreen> {
                             );
                         setState(() => isLoading = false);
                         ref.read(imageProvider.notifier).state = null;
-                        Navigator.of(context).pop();
+
+                        if(mounted) {
+                          Navigator.of(context).pop();
+                        }
                       },
                       text: const Text('Send Message'),
                     ),

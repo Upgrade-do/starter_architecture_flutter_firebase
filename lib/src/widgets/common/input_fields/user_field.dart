@@ -64,7 +64,7 @@ class UserInputFields extends ConsumerWidget {
 
     final isAvailable = ref.watch(_watchIsHidden);
     final registration = ref.read(startRegistrationRequestProvider);
-    final _validateRegistrationRequest = ref.read(validateRegistrationRequest);
+    final validateRegistrationRequest = ref.read(validateRegistrationRequest);
     final codeValue = ref.watch(_countryCodeValue);
     return isAvailable
         ? Row(
@@ -95,7 +95,7 @@ class UserInputFields extends ConsumerWidget {
                         _onCallingCodeTextFieldChanged(
                           selectedCallingCode.value,
                         );
-                        _validateRegistrationRequest.callingCode =
+                        validateRegistrationRequest.callingCode =
                             formattedCallingCode;
 
                         ref
@@ -121,7 +121,7 @@ class UserInputFields extends ConsumerWidget {
                     return 'error';
                   },
                   onChanged: (phoneNumber) {
-                    _validateRegistrationRequest.phoneNumber = phoneNumber;
+                    validateRegistrationRequest.phoneNumber = phoneNumber;
                     registration.phoneNumber = phoneNumber!;
                     _onPhoneTextFieldChanged(phoneNumber);
                   },

@@ -68,12 +68,12 @@ class TeapaymentLocalizationController extends ChangeNotifier {
     }
   }
 
-  bool _checkInitLocale(Locale locale, Locale? _deviceLocale) {
+  bool _checkInitLocale(Locale locale, Locale? deviceLocale) {
     // If supported locale not contain countryCode then check only languageCode
     if (locale.countryCode == null) {
-      return locale.languageCode == _deviceLocale!.languageCode;
+      return locale.languageCode == deviceLocale!.languageCode;
     } else {
-      return locale == _deviceLocale;
+      return locale == deviceLocale;
     }
   }
 
@@ -124,8 +124,8 @@ class TeapaymentLocalizationController extends ChangeNotifier {
     // final _strLocale = _preferences.getString('locale');
     // _savedLocale = _strLocale != null ? _strLocale.toLocale() : null;
     // _savedLocale = Locale('en')
-    final _foundPlatformLocale = await findSystemLocale();
-    _deviceLocale = _foundPlatformLocale.toLocale();
+    final foundPlatformLocale = await findSystemLocale();
+    _deviceLocale = foundPlatformLocale.toLocale();
     // EasyLocalization.logger.debug('Localization initialized');
   }
 

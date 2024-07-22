@@ -33,10 +33,6 @@ class ChatRepository {
     required XFile? image,
     required String promptText,
   }) async {
-    // Define your model
-    // final textModel = GenerativeModel(
-    //     model: 'gemini-pro', apiKey: "AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo");
-
     final userId = _auth.currentUser!.uid;
     final sentMessageId = const Uuid().v4();
 
@@ -76,16 +72,7 @@ class ChatRepository {
         // response = await model.generativeModel(model: model) //.generateContent([Content.text(promptText)]);
         var prompt = [Content.text(promptText)];
 
-        //   final prompt = [
-//     Content.text(
-//         'tell me where can i find the recepies app from google io 2024')
-//   ];
-
-// // To generate text output, call generateContent with the text input
-//   final response = await model.generateContent(prompt);
-        // print(response.text);
-
-// To generate text output, call generateContent with the text input
+      // To generate text output, call generateContent with the text input
         response = await model.generateContent(prompt);
       } else {
         // convert it to Uint8List
@@ -94,7 +81,7 @@ class ChatRepository {
         // Define your parts
         final prompt = TextPart(promptText);
         final mimeType = image.getMimeTypeFromExtension();
-        final imagePart = DataPart(mimeType, imageBytes);
+        final imagePart = DataPart('image/jpeg', imageBytes);
 
         // Make a mutli-model request to Gemini API
         response = await model.generateContent([

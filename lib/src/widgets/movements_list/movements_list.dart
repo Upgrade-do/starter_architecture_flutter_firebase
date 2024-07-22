@@ -39,8 +39,8 @@ class MovementListData {
 
   String get dateTime {
     final DateFormat formatter = DateFormat.yMMMMd('en_US');
-    final _date = DateTime.fromMillisecondsSinceEpoch(date);
-    return formatter.format(_date);
+    final date = DateTime.fromMillisecondsSinceEpoch(date);
+    return formatter.format(date);
   }
 
   String get stringAmount => amount.toStringAsFixed(2);
@@ -248,7 +248,7 @@ class _MovementsListState extends ConsumerState<MovementsList> {
   bool get _isLastMovement => _totalMovements <= _currentMovementsList.length;
   bool get _isLastPage => _currentPage == _totalPages;
   bool get _isMovementListAvailable =>
-      _currentMovementsList != null && _currentMovementsList.isNotEmpty;
+      _currentMovementsList.isNotEmpty;
 
   @override
   Widget build(BuildContext context) {

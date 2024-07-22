@@ -1,4 +1,3 @@
-import 'package:riverpod/riverpod.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/recepies/application/recepies_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/recepies/presentation/widgets/recipe_fullscreen_dialog.dart';
 import 'package:starter_architecture_flutter_firebase/src/util/extensions.dart';
@@ -6,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/recepies/domain/recipe_model.dart';
-import 'package:starter_architecture_flutter_firebase/src/features/recepies/presentation/recipes_view_model.dart';
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/highlight_border_on_hover_widget.dart';
 import 'package:starter_architecture_flutter_firebase/src/widgets/recepies_widgets/marketplace_button_widget.dart';

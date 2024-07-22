@@ -18,8 +18,8 @@ class UpdatePasscodeSuccessContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CustomAppTheme customAppTheme = ref.watch(appThemeProvider);
-    final _storage = SecureStoreManager.instance;
-    final SharedPreferenceManager _prefs = SharedPreferenceManager.instance;
+    final storage = SecureStoreManager.instance;
+    final SharedPreferenceManager prefs = SharedPreferenceManager.instance;
 
     return Scaffold(
       backgroundColor: customAppTheme.colorsPalette.white,
@@ -69,8 +69,8 @@ class UpdatePasscodeSuccessContent extends ConsumerWidget {
                             .read(clientInfoRequestProviderNotifier.notifier)
                             .reset();
 
-                        await _prefs.writeBiometrics(false);
-                        await _storage.deleteAll();
+                        await prefs.writeBiometrics(false);
+                        await storage.deleteAll();
 
                         // ignore: use_build_context_synchronously
                         context.router.popUntilRoot();

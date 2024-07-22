@@ -26,7 +26,7 @@ class PinCodeValidationScreen extends ConsumerStatefulWidget {
 
 class _PincodeValidationScreen extends ConsumerState<PinCodeValidationScreen> {
   late TextEditingController _pinController;
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   @override
   void initState() {

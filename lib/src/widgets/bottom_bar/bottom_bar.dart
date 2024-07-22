@@ -1,8 +1,8 @@
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
-import 'package:starter_architecture_flutter_firebase/widgets/bottom_bar/bottom_bar_item.dart';
-import 'package:starter_architecture_flutter_firebase/widgets/bottom_bar/quick_action_button.dart';
-import 'package:starter_architecture_flutter_firebase/widgets/bottom_bar/quick_actions_overlay.dart';
-import 'package:starter_architecture_flutter_firebase/widgets/bottom_bar/quick_actions_overlay_content.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/bottom_bar/bottom_bar_item.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/bottom_bar/quick_action_button.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/bottom_bar/quick_actions_overlay.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/bottom_bar/quick_actions_overlay_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

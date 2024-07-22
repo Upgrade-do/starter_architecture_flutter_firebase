@@ -33,16 +33,16 @@ class DropdownPopup<T> extends PopupRoute {
     Animation<double> animation,
     Animation<double> secondaryAnimation,
   ) {
-    double _topOffset;
-    _topOffset = topOffset!;
-    if (topOffset! + totalHeight >= MediaQuery.of(context).size.height) {
-      _topOffset = MediaQuery.of(context).size.height - totalHeight - 40;
+    double topOffset;
+    topOffset = topOffset;
+    if (topOffset + totalHeight >= MediaQuery.of(context).size.height) {
+      topOffset = MediaQuery.of(context).size.height - totalHeight - 40;
     }
 
     return DefaultTextStyle(
       style: customAppTheme.textStyles.bodyLarge,
       child: Padding(
-        padding: EdgeInsets.only(top: _topOffset),
+        padding: EdgeInsets.only(top: topOffset),
         child: Wrap(
           children: [
             SizeTransition(

@@ -165,7 +165,7 @@ class _QuickActionsOverlayContentState
   Widget build(BuildContext context) {
     CustomAppTheme customAppTheme = ref.watch(appThemeProvider);
 
-    QuickActionData _defaultAction = QuickActionData(
+    QuickActionData defaultAction = QuickActionData(
       icon: ThanosIcons.buttonsMore,
       color: ref.watch(appThemeProvider).colorsPalette.neutral2,
       label: 'Add action',
@@ -176,7 +176,7 @@ class _QuickActionsOverlayContentState
           .white, //TODO: Add function to add new action
     );
 
-    QuickActionData _defaultDisableAction = QuickActionData(
+    QuickActionData defaultDisableAction = QuickActionData(
       icon: ThanosIcons.buttonsMore,
       color: ref.watch(appThemeProvider).colorsPalette.primary7,
       label: 'Add action',
@@ -209,17 +209,17 @@ class _QuickActionsOverlayContentState
                       ..._renderActionButton(
                         customAppTheme,
                         QuickActionPosition.left,
-                        widget.left ?? _defaultAction,
+                        widget.left ?? defaultAction,
                       ),
                       ..._renderActionButton(
                         customAppTheme,
                         QuickActionPosition.middle,
-                        widget.middle ?? _defaultDisableAction,
+                        widget.middle ?? defaultDisableAction,
                       ),
                       ..._renderActionButton(
                         customAppTheme,
                         QuickActionPosition.right,
-                        widget.right ?? _defaultDisableAction,
+                        widget.right ?? defaultDisableAction,
                       ),
                     ],
                   ),

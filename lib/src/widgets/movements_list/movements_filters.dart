@@ -191,7 +191,7 @@ class _MovementsFiltersModalState extends ConsumerState<MovementsFiltersModal> {
     },
   };
 
-  late Map<String, dynamic> _typeSmartFilters = {
+  late final Map<String, dynamic> _typeSmartFilters = {
     // 'Interest': {
     //   'type': MovementType.INTEREST.value,
     //   'value': false,
@@ -224,7 +224,7 @@ class _MovementsFiltersModalState extends ConsumerState<MovementsFiltersModal> {
     },
   };
 
-  late Map<String, dynamic> _typeFilters = {
+  late final Map<String, dynamic> _typeFilters = {
     if (widget.filterType == FilterType.SMARTWALLETS ||
         widget.filterType == FilterType.BASEWALLETS)
       ..._typeCommonFilters,

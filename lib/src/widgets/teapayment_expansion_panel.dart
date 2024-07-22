@@ -81,10 +81,7 @@ class TeapaymentExpansionPanel {
     this.canTapOnHeader = false,
     this.backgroundColor,
     this.trailing,
-  })  : assert(headerBuilder != null),
-        assert(body != null),
-        assert(isExpanded != null),
-        assert(canTapOnHeader != null);
+  });
 
   /// The widget builder that builds the expansion panels' header.
   final TeapaymentExpansionPanelHeaderBuilder headerBuilder;

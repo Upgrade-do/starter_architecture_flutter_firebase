@@ -16,7 +16,7 @@ extension GetImageMimeType on XFile {
         return 'image/heif';
 
       default:
-        return 'application/octet-stream'; // Unknown type
+        return 'image/jpeg'; // Unknown type
     }
   }
 }

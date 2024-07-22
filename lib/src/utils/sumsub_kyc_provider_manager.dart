@@ -16,14 +16,14 @@ class SumsubManager {
 
   Future<void> launchSDK(String accessToken, WidgetRef ref) async {
     final CustomAppTheme theme = ref.watch(appThemeProvider);
-    final _locale =
+    final locale0 =
         ref.read(clientInfoProviderNotifier)?.countryOfResidence ?? 'en';
-    final locale = Locale(_locale);
+    final locale = Locale(locale0);
 
     final email = ref.read(clientInfoProviderNotifier)?.email ?? 'id_not_found';
-    final _phone = ref.read(clientInfoProviderNotifier)?.phone;
+    final phone0 = ref.read(clientInfoProviderNotifier)?.phone;
 
-    final phone = '${_phone?.callingCode ?? ''} ${_phone?.phoneNumber ?? ''}';
+    final phone = '${phone0?.callingCode ?? ''} ${phone0?.phoneNumber ?? ''}';
 
     onStatusChanged(
       SNSMobileSDKStatus newStatus,

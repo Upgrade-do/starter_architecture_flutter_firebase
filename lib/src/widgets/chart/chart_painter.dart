@@ -111,15 +111,15 @@ class ChartPainter extends CustomPainter {
           _labelsHeight,
     );
 
-    int _xAxisInterval = 1;
+    int xAxisInterval = 1;
     if (data.values.length > 10) {
-      _xAxisInterval = 2;
+      xAxisInterval = 2;
     }
     if (data.values.length > 15) {
-      _xAxisInterval = 3;
+      xAxisInterval = 3;
     }
     if (data.values.length > 28) {
-      _xAxisInterval = 8;
+      xAxisInterval = 8;
     }
 
     for (var index = 0; index < data.values.length; index++) {
@@ -136,7 +136,7 @@ class ChartPainter extends CustomPainter {
 
       tp.layout();
 
-      if (index % _xAxisInterval == 0) {
+      if (index % xAxisInterval == 0) {
         tp.paint(
           canvas,
           Offset(

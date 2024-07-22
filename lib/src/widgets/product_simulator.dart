@@ -686,9 +686,9 @@ class _ProductSimulatorState extends ConsumerState<ProductSimulator>
 
   void _setWalletTypeForAmount(String amount) {
     try {
-      double _amount = double.parse(amount);
+      double amount0 = double.parse(amount);
 
-      final (_, walletType) = _getWalletInformation(_amount);
+      final (_, walletType) = _getWalletInformation(amount0);
 
       setState(() {
         _selectedWalletType = walletType;
@@ -712,11 +712,11 @@ class _ProductSimulatorState extends ConsumerState<ProductSimulator>
     _baseBalanceIsSufficient = amount <= _baseWalletBalance;
     _smartBalanceIsSufficient = amount <= _smartWalletBalance;
 
-    final _smartWalletBalanceOrNone =
+    final smartWalletBalanceOrNone =
         !_smartBalanceIsSufficient ? 0.0 : _smartWalletBalance;
 
     final smartWalletOrBaseWalletBalance = !_baseBalanceIsSufficient
-        ? _smartWalletBalanceOrNone
+        ? smartWalletBalanceOrNone
         : _baseWalletBalance;
 
     _sourceWalletBalance = smartWalletOrBaseWalletBalance;

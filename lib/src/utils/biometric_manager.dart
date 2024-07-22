@@ -3,22 +3,15 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
-import 'package:starter_architecture_flutter_firebase/helpers/constants.dart';
-import 'package:starter_architecture_flutter_firebase/navigation/app_router.dart';
-import 'package:starter_architecture_flutter_firebase/providers/general.dart';
-import 'package:starter_architecture_flutter_firebase/screens/pin_code_and_biometrics/biometric_overlay.dart';
-import 'package:starter_architecture_flutter_firebase/screens/pin_code_and_biometrics/pin_code_validation_screen.dart';
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
-import 'package:starter_architecture_flutter_firebase/utils/secure_storange_manager.dart';
-import 'package:starter_architecture_flutter_firebase/utils/shared_preference_manager.dart';
-import 'package:starter_architecture_flutter_firebase/widgets/localization/teapayment_localization.dart';
-import 'package:starter_architecture_flutter_firebase/widgets/toast_message.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:local_auth/local_auth.dart';
+import 'package:starter_architecture_flutter_firebase/src/utils/secure_storange_manager.dart';
+import 'package:starter_architecture_flutter_firebase/src/utils/shared_preference_manager.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/pin_code_and_biometrics/biometric_overlay.dart';
+import 'package:starter_architecture_flutter_firebase/src/widgets/pin_code_and_biometrics/pin_code_validation_screen.dart';
 
 class BiometricsManager {
   factory BiometricsManager() {
@@ -84,10 +77,6 @@ class BiometricsManager {
 /////// functions to handle biometric and PIN code authentication: /////////
 
   Future<bool> _authenticateWithBiometricsOverlay(BuildContext context) async {
-    if (context == null) {
-      return false;
-    }
-
     CustomAppTheme customAppTheme = _ref!.read(appThemeProvider);
     bool isAuthenticated = false;
 
@@ -112,7 +101,7 @@ class BiometricsManager {
     bool isAuthenticate = false;
     CustomAppTheme customAppTheme = _ref!.watch(appThemeProvider);
     try {
-      await Navigator.of(context!).push(
+      await Navigator.of(context).push(
         PinCodeValidationOverlay(
           onValidationCompleted: (isAuthenticated) {
             isAuthenticate = isAuthenticated;

@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:starter_architecture_flutter_firebase/src/features/authentication/presentation/auth_providers.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/application/get_all_messages_provider.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/presentation/send_image_screen.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/chat/presentation/widgets/messages_list.dart';
