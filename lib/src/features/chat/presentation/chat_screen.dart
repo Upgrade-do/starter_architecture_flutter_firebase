@@ -21,10 +21,11 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   FocusNode? textFieldNode;
   // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
+
   final _chatClient = ChatbotClient(
     projectId: 'vaca-esquizofrenica',
     agentId: '115028904647127410727',
-    location: 'us',
+    location: 'global',
   );
 
     List<String> _messages = [];
@@ -36,17 +37,18 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     setState(() {
       _messages.add('You: $message');
     });
-try {
-  final response = await _chatClient.sendMessage('1', message);
-    print(response);
-    setState(() {
-      _messages.add('Bot: $response');
-    });
 
-    _messageController.clear();
-} catch (e) {
-  debugPrint('ERROR CALLING DIALOG FLOW: ${e.toString()}');
-}
+    try {
+      final response = await _chatClient.sendMessage('1', message);
+        // print(response);
+        setState(() {
+          _messages.add('Bot: $response');
+        });
+
+        _messageController.clear();
+    } catch (e) {
+      debugPrint('ERROR CALLING DIALOG FLOW: ${e.toString()}');
+    }
     
   }
 
