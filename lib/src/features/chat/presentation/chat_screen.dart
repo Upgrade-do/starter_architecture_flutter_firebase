@@ -22,10 +22,33 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
   final _chatClient = ChatbotClient(
-projectId: 'vaca-esquizofrenica',
-agentId: '115028904647127410727',
-location: 'us',
+    projectId: 'vaca-esquizofrenica',
+    agentId: '115028904647127410727',
+    location: 'us',
   );
+
+    List<String> _messages = [];
+
+  void _sendMessage() async {
+    final message = _messageController.text;
+    if (message.isEmpty) return;
+
+    setState(() {
+      _messages.add('You: $message');
+    });
+try {
+  final response = await _chatClient.sendMessage('1', message);
+    print(response);
+    setState(() {
+      _messages.add('Bot: $response');
+    });
+
+    _messageController.clear();
+} catch (e) {
+  debugPrint('ERROR CALLING DIALOG FLOW: ${e.toString()}');
+}
+    
+  }
 
   @override
   void initState() {
@@ -36,7 +59,7 @@ location: 'us',
       onKeyEvent: (node, event) {
         if (event is KeyDownEvent &&
             event.physicalKey == PhysicalKeyboardKey.enter) {
-          sendMessage();
+          _sendMessage();
           return KeyEventResult.handled;
         }
         return KeyEventResult.ignored;
@@ -82,9 +105,24 @@ location: 'us',
         child: Column(
           children: [
             // Message List
-            Expanded(
-              child: MessagesList(
-                userId: FirebaseAuth.instance.currentUser!.uid,
+            // SizedBox(
+            //   height: 200,
+            //   child: Expanded(
+            //     child: MessagesList(
+            //       userId: FirebaseAuth.instance.currentUser!.uid,
+            //     ),
+            //   ),
+            // ),
+
+            SizedBox(
+              height: 400,
+              child: ListView.builder(
+                itemCount: _messages.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(_messages[index]),
+                  );
+                },
               ),
             ),
 
@@ -127,12 +165,17 @@ location: 'us',
                   ),
 
                   // Send Button
-                  IconButton(
-                    onPressed: sendMessage,
-                    icon: const Icon(
-                      Icons.send,
-                    ),
-                  ),
+                  // IconButton(
+                  //   onPressed: sendMessage,
+                  //   icon: const Icon(
+                  //     Icons.send,
+                  //   ),
+                  // ),
+
+                    IconButton(
+                  icon: const Icon(Icons.send),
+                  onPressed: _sendMessage,
+                ),
                 ],
               ),
             ),

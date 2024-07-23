@@ -45,7 +45,6 @@ dependencies:
   # the annotation package containing @riverpod
   flutter_markdown: ^0.7.3
   google_fonts: ^6.2.1
-  icons_launcher: ^2.1.3
   animated_text_kit: ^4.2.2
   flutter_dotenv: ^5.1.0
   image_picker: ^1.1.2
@@ -74,6 +73,8 @@ dev_dependencies:
   riverpod_lint: 2.3.10
   # import custom_lint too as riverpod_lint depends on it
   custom_lint: 0.6.4
+  icons_launcher: ^2.1.7
+  
 
 flutter:
   # The following line ensures that the Material Icons font is
@@ -83,3 +84,4 @@ flutter:
   assets:
     # - assets/fonts/
     - assets/
+    - assets/key.json

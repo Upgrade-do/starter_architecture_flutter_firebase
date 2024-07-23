@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:googleapis/dialogflow/v3.dart' as df;
@@ -8,15 +9,18 @@ class AuthClient {
   static const _scopes = [df.DialogflowApi.cloudPlatformScope];
 
   static Future<df.DialogflowApi> getDialogflowApi() async {
-    // Load the service account JSON file from assets
-    final serviceAccountJson = await rootBundle.loadString('assets/key.json');
-    final credentials = ServiceAccountCredentials.fromJson(json.decode(serviceAccountJson));
-    final client = await clientViaServiceAccount(credentials, _scopes);
-
-    // Specify the base URL for the correct region
-    const endpoint = 'https://us-dialogflow.googleapis.com/'; // {us-central1}
-
-    return df.DialogflowApi(client, rootUrl: endpoint);
+ 
+        // Load the service account JSON file from assets
+        final serviceAccountJson = await rootBundle.loadString('assets/key.json');
+        final credentials = ServiceAccountCredentials.fromJson(json.decode(serviceAccountJson));
+        debugPrint(' SERVICE JSON: \n $serviceAccountJson');
+        final client = await clientViaServiceAccount(credentials, _scopes);
+    
+        // Specify the base URL for the correct region
+        const endpoint = 'https://us-dialogflow.googleapis.com/'; // {us-central1}
+        return df.DialogflowApi(client, rootUrl: endpoint);
+ 
+ 
   }
 }
 

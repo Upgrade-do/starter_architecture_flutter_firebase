@@ -958,7 +958,7 @@ PODS:
   - BoringSSL-GRPC/Interface (0.0.32)
   - camera_avfoundation (0.0.1):
     - Flutter
-  - cloud_firestore (5.0.2):
+  - cloud_firestore (5.1.0):
     - Firebase/Firestore (= 10.28.0)
     - firebase_core
     - Flutter
@@ -983,19 +983,19 @@ PODS:
   - Firebase/Storage (10.28.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 10.28.0)
-  - firebase_app_check (0.3.0-2):
+  - firebase_app_check (0.3.0-3):
     - Firebase/CoreOnly (~> 10.28.0)
     - firebase_core
     - FirebaseAppCheck (~> 10.28.0)
     - Flutter
-  - firebase_auth (5.1.1):
+  - firebase_auth (5.1.2):
     - Firebase/Auth (= 10.28.0)
     - firebase_core
     - Flutter
   - firebase_core (3.2.0):
     - Firebase/CoreOnly (= 10.28.0)
     - Flutter
-  - firebase_dynamic_links (6.0.2):
+  - firebase_dynamic_links (6.0.3):
     - Firebase/DynamicLinks (= 10.28.0)
     - firebase_core
     - Flutter
@@ -1325,14 +1325,14 @@ SPEC CHECKSUMS:
   AppCheckCore: 9feb4300caa596a36416cde10674dc5bec1e022e
   BoringSSL-GRPC: 1e2348957acdbcad360b80a264a90799984b2ba6
   camera_avfoundation: dd002b0330f4981e1bbcb46ae9b62829237459a4
-  cloud_firestore: 9b13aee630ba3bc9e853ab72be3e7630e2e9c075
+  cloud_firestore: 71f0ffec97ce23c51587ec906f4cc470c518bc70
   desktop_webview_auth: d645139460ef203d50bd0cdb33356785dd939cce
   device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
   Firebase: 5121c624121af81cbc81df3bda414b3c28c4f3c3
-  firebase_app_check: e0426ec7af955cb12d8475e3aaec3b0d05cfd678
-  firebase_auth: 7970a5b78ab99bb9a912c2ed6e92f1e5483ad9f5
+  firebase_app_check: d26a83129d5bfe1fd66b9c2f3432fb3df486eee5
+  firebase_auth: e778ee89483b86fe4200d1f8e9a1c52aa5fb64a8
   firebase_core: a9d0180d5285527884d07a41eb4a9ec9ed12cdb6
-  firebase_dynamic_links: 231521e1340d963a7c2c5226fb7bd8d22c1c4eec
+  firebase_dynamic_links: ef37ec989592ed84f0bbcf2d2f938d4407bee1c2
   firebase_storage: f7cd2f66840540e243e77325f4e272e2c0dc0603
   FirebaseAnalytics: 1e06fe7d246af7230b08d1d9cdca54a4624dd461
   FirebaseAppCheck: 94bcff56401058ba9f7343fff086380ffb987ed6
@@ -1368,4 +1368,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c9ba25ba2f748029f59ff5581ec2444ec50c41d0
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2
