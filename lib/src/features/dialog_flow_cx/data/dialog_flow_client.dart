@@ -9,25 +9,26 @@ import 'package:http/http.dart' as http;
 class AuthClient {
   static const _scopes = [df.DialogflowApi.cloudPlatformScope];
 
-  static Future<dynamic> getDialogflowApi() async {
-    try {
-      final serviceAccountJson = await rootBundle.loadString('assets/key.json');
-      final credentials =
-          ServiceAccountCredentials.fromJson(json.decode(serviceAccountJson));
-      // debugPrint(' SERVICE JSON: \n $serviceAccountJson');
-      final client = await clientViaServiceAccount(credentials, _scopes);
+  /// Retrieves the `DialogflowApi` instance.
+  ///
+  /// This function loads the service account JSON file from the `assets/key.json`
+  /// file and creates the necessary credentials. It then creates a client
+  /// using the `clientViaServiceAccount` function and the loaded credentials.
+  ///
+  /// The function specifies the base URL for the correct region, which in this
+  /// case is `https://us-central1-dialogflow.googleapis.com/`.
+  ///
+  /// Returns a `Future` that resolves to a `DialogflowApi` instance.
+  static Future<df.DialogflowApi> getDialogflowApi() async {
+    final serviceAccountJson = await rootBundle.loadString('assets/key.json');
+    final credentials =
+        ServiceAccountCredentials.fromJson(json.decode(serviceAccountJson));
 
-      // Specify the base URL for the correct region
-      const endpoint =
-          'https://us-central1-dialogflow.googleapis.com/'; // {us-central1}
-      return df.DialogflowApi(client, rootUrl: endpoint);
-    } catch (e) {
-      // debugPrint(' SERVICE JSON: \n $e');
-      final ServerRequestFailedException error =
-          e as ServerRequestFailedException;
-      debugPrint(' SERVICE JSON API ERROR: \n ${error.message}');
-    }
-    // Load the service account JSON file from assets
+    final client = await clientViaServiceAccount(credentials, _scopes);
+
+    const endpoint = 'https://us-central1-dialogflow.googleapis.com/';
+
+    return df.DialogflowApi(client, rootUrl: endpoint);
   }
 }
 
