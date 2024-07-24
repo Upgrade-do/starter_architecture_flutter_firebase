@@ -7,6 +7,7 @@ import 'package:starter_architecture_flutter_firebase/src/features/chat/presenta
 import 'package:starter_architecture_flutter_firebase/src/features/chat/presentation/widgets/messages_list.dart';
 import 'package:starter_architecture_flutter_firebase/src/features/dialog_flow_cx/data/dialog_flow_client.dart';
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
+import 'package:uuid/uuid.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
   const ChatScreen({super.key});
@@ -24,11 +25,11 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
 
   final _chatClient = ChatbotClient(
     projectId: 'vaca-esquizofrenica',
-    agentId: '115028904647127410727',
-    location: 'global',
+    agentId: 'f49327e8-9132-43c9-8517-868802bb5439',
+    location: 'us-central1',
   );
 
-    List<String> _messages = [];
+  List<String> _messages = [];
 
   void _sendMessage() async {
     final message = _messageController.text;
@@ -39,17 +40,17 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     });
 
     try {
-      final response = await _chatClient.sendMessage('1', message);
-        // print(response);
-        setState(() {
-          _messages.add('Bot: $response');
-        });
+      final response =
+          await _chatClient.sendMessage(const Uuid().v4(), message);
+      // print(response);
+      setState(() {
+        _messages.add('Bot: $response');
+      });
 
-        _messageController.clear();
+      _messageController.clear();
     } catch (e) {
       debugPrint('ERROR CALLING DIALOG FLOW: ${e.toString()}');
     }
-    
   }
 
   @override
@@ -117,7 +118,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
             // ),
 
             SizedBox(
-              height: 400,
+              height: 700,
               child: ListView.builder(
                 itemCount: _messages.length,
                 itemBuilder: (context, index) {
@@ -174,10 +175,10 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                   //   ),
                   // ),
 
-                    IconButton(
-                  icon: const Icon(Icons.send),
-                  onPressed: _sendMessage,
-                ),
+                  IconButton(
+                    icon: const Icon(Icons.send),
+                    onPressed: _sendMessage,
+                  ),
                 ],
               ),
             ),
