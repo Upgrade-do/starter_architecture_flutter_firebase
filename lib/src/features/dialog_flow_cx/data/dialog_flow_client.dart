@@ -58,7 +58,7 @@ class ChatbotClient {
     if (queryResult != null &&
         queryResult.responseMessages != null &&
         queryResult.responseMessages!.isNotEmpty) {
-      // debugPrint(response.queryResult.responseMessages[0].text);
+      debugPrint(queryResult.responseMessages!.first.text!.text!.toString());
       return queryResult.responseMessages!.first.text!.text!.first;
     } else {
       return 'No response from chatbot';

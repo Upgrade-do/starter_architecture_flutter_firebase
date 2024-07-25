@@ -104,3 +104,7 @@ android/app/google-services.json
 
 # Firebase hosting
 .firebase/
+
+#credentials
+# Ignore the key.json file in the assets folder
+./assets/key.json
