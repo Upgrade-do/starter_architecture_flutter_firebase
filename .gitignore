@@ -107,4 +107,4 @@ android/app/google-services.json
 
 #credentials
 # Ignore the key.json file in the assets folder
-.assets/key.json
+/assets/key.json
