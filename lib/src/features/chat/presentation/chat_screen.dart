@@ -8,6 +8,7 @@ import 'package:starter_architecture_flutter_firebase/src/features/chat/presenta
 import 'package:starter_architecture_flutter_firebase/src/features/dialog_flow_cx/data/dialog_flow_client.dart';
 import 'package:starter_architecture_flutter_firebase/src/theme/app_theme.dart';
 import 'package:uuid/uuid.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
   const ChatScreen({super.key});
@@ -20,6 +21,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   late final TextEditingController _messageController;
   // final Gemini gemini = Gemini.instance;
   FocusNode? textFieldNode;
+  final FocusNode _focusNode = FocusNode();
   // final apiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
   final apiKey = 'AIzaSyCG1Vl2PQiF4NH4k-Y4tru_ShrvygYHzgo';
 
@@ -74,6 +76,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   void dispose() {
     _messageController.dispose();
     textFieldNode?.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -100,89 +103,101 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
           }),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 12,
-        ),
-        child: Column(
-          children: [
-            // Message List
-            // SizedBox(
-            //   height: 200,
-            //   child: Expanded(
-            //     child: MessagesList(
-            //       userId: FirebaseAuth.instance.currentUser!.uid,
-            //     ),
-            //   ),
-            // ),
+      body: GestureDetector(
+        onTap: () {
+          _focusNode.unfocus();
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 12,
+          ),
+          child: Column(
+            children: [
+              // Message List
+              // SizedBox(
+              //   height: 200,
+              //   child: Expanded(
+              //     child: MessagesList(
+              //       userId: FirebaseAuth.instance.currentUser!.uid,
+              //     ),
+              //   ),
+              // ),
 
-            SizedBox(
-              height: 700,
-              child: ListView.builder(
-                itemCount: _messages.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(_messages[index]),
-                  );
-                },
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _messages.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Focus(
+                        focusNode: _focusNode,
+                        child: SelectableText(
+                          _messages[index],
+                          onTap: () {
+                            _focusNode.requestFocus();
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
 
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 3,
-              ),
-              decoration: BoxDecoration(
-                color: theme.colorsPalette.neutral2,
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Row(
-                children: [
-                  // Message Text field
-                  Expanded(
-                    child: TextField(
-                      controller: _messageController,
-                      focusNode: textFieldNode,
-                      onSubmitted: (input) async => sendMessage(),
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Ask any question',
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 3,
+                ),
+                decoration: BoxDecoration(
+                  color: theme.colorsPalette.neutral2,
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Row(
+                  children: [
+                    // Message Text field
+                    Expanded(
+                      child: TextField(
+                        controller: _messageController,
+                        focusNode: textFieldNode,
+                        onSubmitted: (input) async => sendMessage(),
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Ask any question',
+                        ),
                       ),
                     ),
-                  ),
 
-                  // Image Button
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => const SendImageScreen(),
-                        ),
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.image,
+                    // Image Button
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const SendImageScreen(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(
+                        Icons.image,
+                      ),
                     ),
-                  ),
 
-                  // Send Button
-                  // IconButton(
-                  //   onPressed: sendMessage,
-                  //   icon: const Icon(
-                  //     Icons.send,
-                  //   ),
-                  // ),
+                    // Send Button
+                    // IconButton(
+                    //   onPressed: sendMessage,
+                    //   icon: const Icon(
+                    //     Icons.send,
+                    //   ),
+                    // ),
 
-                  IconButton(
-                    icon: const Icon(Icons.send),
-                    onPressed: _sendMessage,
-                  ),
-                ],
+                    IconButton(
+                      icon: const Icon(Icons.send),
+                      onPressed: _sendMessage,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

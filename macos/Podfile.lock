@@ -956,12 +956,14 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.32):
     - BoringSSL-GRPC/Interface (= 0.0.32)
   - BoringSSL-GRPC/Interface (0.0.32)
-  - cloud_firestore (5.0.2):
+  - cloud_firestore (5.1.0):
     - Firebase/CoreOnly (~> 10.28.0)
     - Firebase/Firestore (~> 10.28.0)
     - firebase_core
     - FlutterMacOS
   - desktop_webview_auth (0.0.1):
+    - FlutterMacOS
+  - device_info_plus (0.0.1):
     - FlutterMacOS
   - file_selector_macos (0.0.1):
     - FlutterMacOS
@@ -982,12 +984,12 @@ PODS:
   - Firebase/Storage (10.28.1):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 10.28.0)
-  - firebase_app_check (0.3.0-2):
+  - firebase_app_check (0.3.0-3):
     - Firebase/AppCheck (~> 10.28.0)
     - Firebase/CoreOnly (~> 10.28.0)
     - firebase_core
     - FlutterMacOS
-  - firebase_auth (5.1.1):
+  - firebase_auth (5.1.2):
     - Firebase/Auth (~> 10.28.0)
     - Firebase/CoreOnly (~> 10.28.0)
     - firebase_core
@@ -1218,10 +1220,14 @@ PODS:
     - FlutterMacOS
   - speech_to_text_macos (0.0.1):
     - FlutterMacOS
+  - sqflite (0.0.3):
+    - Flutter
+    - FlutterMacOS
 
 DEPENDENCIES:
   - cloud_firestore (from `Flutter/ephemeral/.symlinks/plugins/cloud_firestore/macos`)
   - desktop_webview_auth (from `Flutter/ephemeral/.symlinks/plugins/desktop_webview_auth/macos`)
+  - device_info_plus (from `Flutter/ephemeral/.symlinks/plugins/device_info_plus/macos`)
   - file_selector_macos (from `Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos`)
   - Firebase/AppCheck
   - Firebase/Auth
@@ -1236,6 +1242,7 @@ DEPENDENCIES:
   - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin`)
   - speech_to_text_macos (from `Flutter/ephemeral/.symlinks/plugins/speech_to_text_macos/macos`)
+  - sqflite (from `Flutter/ephemeral/.symlinks/plugins/sqflite/darwin`)
 
 SPEC REPOS:
   trunk:
@@ -1270,6 +1277,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/cloud_firestore/macos
   desktop_webview_auth:
     :path: Flutter/ephemeral/.symlinks/plugins/desktop_webview_auth/macos
+  device_info_plus:
+    :path: Flutter/ephemeral/.symlinks/plugins/device_info_plus/macos
   file_selector_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos
   firebase_app_check:
@@ -1288,17 +1297,20 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin
   speech_to_text_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/speech_to_text_macos/macos
+  sqflite:
+    :path: Flutter/ephemeral/.symlinks/plugins/sqflite/darwin
 
 SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
   AppCheckCore: 9feb4300caa596a36416cde10674dc5bec1e022e
   BoringSSL-GRPC: 1e2348957acdbcad360b80a264a90799984b2ba6
-  cloud_firestore: e9f686c78fc9d664d4b8e1aeaefc524bf4cf1a7b
+  cloud_firestore: 08998fcbe945915583c64b5408ca10ef23a230f1
   desktop_webview_auth: 9bba53a29c9bc6a4ff621fd0ebfbb18856c4dada
+  device_info_plus: 5401765fde0b8d062a2f8eb65510fb17e77cf07f
   file_selector_macos: 54fdab7caa3ac3fc43c9fac4d7d8d231277f8cf2
   Firebase: 49e62242b3ae422a002ab647a7e62a332a8c3ec1
-  firebase_app_check: 51c15b75a39ac7e1e27c358320d12b0c2dfb1317
-  firebase_auth: 1322d0c925e69d3403f8bd60e20cfb3a32172992
+  firebase_app_check: e6806c99c7e8f8b3ad59d743cdd9b1f3b02b8db8
+  firebase_auth: d213b76584243b0a5edf492444f6de6b89d16833
   firebase_core: d8af40a9c8a9ce3112a94692aac83675627c0486
   firebase_storage: 3671a89be782f04afc227ccba03b944e2a1349b6
   FirebaseAnalytics: 1e06fe7d246af7230b08d1d9cdca54a4624dd461
@@ -1326,7 +1338,8 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
   speech_to_text_macos: ae04291713998dede24b85d3b50bd8fedcbfb565
+  sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
 
 PODFILE CHECKSUM: 36cad822734e7bdd50cf7e1e9e7dee6dd367b7be
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.14.3
