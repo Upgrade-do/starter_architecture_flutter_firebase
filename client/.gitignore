@@ -4,48 +4,48 @@
 *.log
 *.pyc
 *.swp
-*.DS_Store
-*.atom/
-*.buildlog/
-*.history
-*.svn/
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
 
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
-*.idea/
+.idea/
 
 # Visual Studio Code related
 #.vscode/
-*.vscode/settings.json
+.vscode/settings.json
 
 # Flutter repo-specific
-*/bin/cache/
-*/bin/mingit/
-*/dev/benchmarks/mega_gallery/
-*/dev/bots/.recipe_deps
-*/dev/bots/android_tools/
-*/dev/docs/doc/
-*/dev/docs/flutter.docs.zip
-*/dev/docs/lib/
-*/dev/docs/pubspec.yaml
-*/packages/flutter/coverage/
+/bin/cache/
+/bin/mingit/
+/dev/benchmarks/mega_gallery/
+/dev/bots/.recipe_deps
+/dev/bots/android_tools/
+/dev/docs/doc/
+/dev/docs/flutter.docs.zip
+/dev/docs/lib/
+/dev/docs/pubspec.yaml
+/packages/flutter/coverage/
 version
 
 # Flutter/Dart/Pub related
 **/doc/api/
-*.dart_tool/
-*.flutter-plugins
-*.packages
-*.pub-cache/
-*.pub/
-*build/
-*flutter_*.png
-*linked_*.ds
-*unlinked.ds
-*unlinked_spec.ds
-*.flutter-plugins-dependencies
+.dart_tool/
+.flutter-plugins
+.packages
+.pub-cache/
+.pub/
+build/
+flutter_*.png
+linked_*.ds
+unlinked.ds
+unlinked_spec.ds
+.flutter-plugins-dependencies
 
 # Android related
 **/android/**/gradle-wrapper.jar
@@ -95,49 +95,16 @@ version
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
 # Firebase configuration files
-*lib/firebase_options.dart
-*ios/Runner/GoogleService-Info.plist
-*ios/firebase_app_id_file.json
-*macos/Runner/GoogleService-Info.plist
-*macos/firebase_app_id_file.json
-*android/app/google-services.json
+lib/firebase_options.dart
+ios/Runner/GoogleService-Info.plist
+ios/firebase_app_id_file.json
+macos/Runner/GoogleService-Info.plist
+macos/firebase_app_id_file.json
+android/app/google-services.json
 
 # Firebase hosting
-*.firebase/
+.firebase/
 
 #credentials
 # Ignore the key.json file in the assets folder
-*assets/key.json
-
-# dependencies
-*/node_modules
-*/.pnp
-*.pnp.js
-*.yarn/install-state.gz
-
-# testing
-*/coverage
-
- 
-
-# production
-*/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-*/npm-debug.log*
-*/yarn-debug.log*
-*/yarn-error.log*
-
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo 
- 
+assets/key.json
